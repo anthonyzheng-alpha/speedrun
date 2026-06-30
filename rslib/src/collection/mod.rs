@@ -2,6 +2,7 @@
 // License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
 
 pub mod backup;
+mod mcat;
 mod service;
 pub(crate) mod timestamps;
 mod transact;
@@ -41,6 +42,7 @@ pub struct CollectionBuilder {
     tr: Option<I18n>,
     check_integrity: bool,
     progress_handler: Option<Arc<Mutex<ProgressState>>>,
+    seed_initial_content: bool,
 }
 
 impl CollectionBuilder {
@@ -61,8 +63,9 @@ impl CollectionBuilder {
         let server = self.server.unwrap_or_default();
         let media_folder = self.media_folder.clone().unwrap_or_default();
         let media_db = self.media_db.clone().unwrap_or_default();
-        let storage = SqliteStorage::open_or_create(&col_path, &tr, server, self.check_integrity)?;
-        let col = Collection {
+        let (storage, created) =
+            SqliteStorage::open_or_create(&col_path, &tr, server, self.check_integrity)?;
+        let mut col = Collection {
             storage,
             col_path,
             media_folder,
@@ -74,6 +77,10 @@ impl CollectionBuilder {
                 ..Default::default()
             },
         };
+
+        if created && self.seed_initial_content {
+            col.seed_mcat_decks()?;
+        }
 
         Ok(col)
     }
@@ -112,6 +119,13 @@ impl CollectionBuilder {
 
     pub fn set_check_integrity(&mut self, check_integrity: bool) -> &mut Self {
         self.check_integrity = check_integrity;
+        self
+    }
+
+    /// If enabled, freshly created collections are seeded with starter MCAT
+    /// study decks. This is opt-in so that test collections remain empty.
+    pub fn set_seed_initial_content(&mut self, seed: bool) -> &mut Self {
+        self.seed_initial_content = seed;
         self
     }
 

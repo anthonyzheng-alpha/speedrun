@@ -22,7 +22,8 @@ impl BackendCollectionService for Backend {
             .set_media_paths(input.media_folder_path, input.media_db_path)
             .set_server(self.server)
             .set_tr(self.tr.clone())
-            .set_shared_progress_state(self.progress_state.clone());
+            .set_shared_progress_state(self.progress_state.clone())
+            .set_seed_initial_content(true);
 
         *guard = Some(builder.build()?);
 

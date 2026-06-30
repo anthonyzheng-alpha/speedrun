@@ -476,12 +476,15 @@ fn trace(event: TraceEvent) {
 }
 
 impl SqliteStorage {
+    /// Returns the storage handle along with a flag indicating whether the
+    /// collection was freshly created (`true`) rather than opened from an
+    /// existing file.
     pub(crate) fn open_or_create(
         path: &Path,
         tr: &I18n,
         server: bool,
         check_integrity: bool,
-    ) -> Result<Self> {
+    ) -> Result<(Self, bool)> {
         let db = open_or_create_collection_db(path)?;
         let (create, ver) = schema_version(&db)?;
 
@@ -547,7 +550,7 @@ impl SqliteStorage {
             storage.commit_trx()?;
         }
 
-        Ok(storage)
+        Ok((storage, create))
     }
 
     pub(crate) fn close(self, desired_version: Option<SchemaVersion>) -> Result<()> {

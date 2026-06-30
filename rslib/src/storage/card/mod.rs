@@ -942,7 +942,7 @@ mod test {
     #[test]
     fn add_card() {
         let tr = I18n::template_only();
-        let storage =
+        let (storage, _) =
             SqliteStorage::open_or_create(Path::new(":memory:"), &tr, false, false).unwrap();
         let mut card = Card::default();
         storage.add_card(&mut card).unwrap();
