@@ -2,7 +2,7 @@
 // License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
 
 pub mod backup;
-mod mcat;
+pub(crate) mod mcat;
 mod service;
 pub(crate) mod timestamps;
 mod transact;

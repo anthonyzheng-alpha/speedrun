@@ -16,6 +16,8 @@ service StatsService {
   rpc Graphs(GraphsRequest) returns (GraphsResponse);
   rpc GetGraphPreferences(generic.Empty) returns (GraphPreferences);
   rpc SetGraphPreferences(GraphPreferences) returns (generic.Empty);
+  // How much of the MCAT exam has been studied, overall and per section.
+  rpc ExamCoverage(generic.Empty) returns (ExamCoverageResponse);
 }
 
 // Implicitly includes any of the above methods that are not listed in the
@@ -92,6 +94,27 @@ message CardMemoryEstimate {
   int64 last_updated = 6;
   // Short human-readable explanation of the estimate.
   string justification = 7;
+}
+
+// Progress through the MCAT exam, expressed as the share of topics that have
+// been fully studied (every card in the topic mastered), broken down by the
+// exam's scored sections.
+message ExamCoverageResponse {
+  message SectionCoverage {
+    // Section deck name, e.g. "Biology & Biochemistry".
+    string section = 1;
+    // Topics in this section that have at least one card in the collection.
+    uint32 topics_total = 2;
+    // Of those, how many are fully covered (all their cards mastered).
+    uint32 topics_covered = 3;
+    // topics_covered / topics_total * 100, or 0 when there are no topics.
+    float percent = 4;
+  }
+  repeated SectionCoverage sections = 1;
+  // Covered topics across all sections divided by total topics, as a percent.
+  float overall_percent = 2;
+  uint32 topics_total = 3;
+  uint32 topics_covered = 4;
 }
 
 message GraphsRequest {

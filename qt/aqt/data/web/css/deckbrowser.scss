@@ -155,3 +155,28 @@ tr:hover:not(.top-level-drag-row) {
 #studiedToday {
     margin: 2em 0;
 }
+
+#examCoverage {
+    margin: 1.5em auto 0.5em auto;
+    max-width: 40em;
+
+    .exam-coverage-headline {
+        font-size: 1.3em;
+    }
+
+    .exam-coverage-sections {
+        margin-top: 0.4em;
+
+        .exam-coverage-section {
+            display: inline-block;
+            margin: 0 0.6em;
+            white-space: nowrap;
+        }
+    }
+
+    .exam-coverage-note {
+        margin-top: 0.6em;
+        font-size: 0.8em;
+        opacity: 0.7;
+    }
+}

@@ -1025,6 +1025,10 @@ class Collection(DeprecatedNamesMixin):
     ) -> Sequence[stats_pb2.CardStatsResponse.StatsRevlogEntry]:
         return self._backend.get_review_logs(card_id)
 
+    def exam_coverage(self) -> stats_pb2.ExamCoverageResponse:
+        """How much of the MCAT exam has been studied, overall and per section."""
+        return self._backend.exam_coverage()
+
     def studied_today(self) -> str:
         return self._backend.studied_today()
 

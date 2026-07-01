@@ -36,6 +36,10 @@ impl crate::services::StatsService for Collection {
     ) -> error::Result<()> {
         self.set_graph_preferences(input)
     }
+
+    fn exam_coverage(&mut self) -> error::Result<anki_proto::stats::ExamCoverageResponse> {
+        self.exam_coverage()
+    }
 }
 
 impl From<RevlogReviewKind> for i32 {

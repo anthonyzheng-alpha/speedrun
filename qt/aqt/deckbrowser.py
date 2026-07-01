@@ -10,6 +10,7 @@ from typing import Any
 
 import aqt
 import aqt.operations
+from anki import stats_pb2
 from anki.collection import Collection, OpChanges
 from anki.decks import DeckCollapseScope, DeckId, DeckTreeNode
 from aqt import AnkiQt, gui_hooks
@@ -42,6 +43,7 @@ class RenderData:
     current_deck_id: DeckId
     studied_today: str
     sched_upgrade_required: bool
+    exam_coverage: stats_pb2.ExamCoverageResponse
 
 
 @dataclass
@@ -164,6 +166,7 @@ class DeckBrowser:
                     current_deck_id=col.decks.get_current_id(),
                     studied_today=col.studied_today(),
                     sched_upgrade_required=not col.v3_scheduler(),
+                    exam_coverage=col.exam_coverage(),
                 )
 
             def success(output: RenderData) -> None:
@@ -205,8 +208,44 @@ class DeckBrowser:
         self.web.eval("window.scrollTo(0, %d, 'instant');" % offset)
 
     def _renderStats(self) -> str:
-        return '<div id="studiedToday"><span>{}</span></div>'.format(
-            self._render_data.studied_today
+        return self._render_exam_coverage() + (
+            '<div id="studiedToday"><span>{}</span></div>'.format(
+                self._render_data.studied_today
+            )
+        )
+
+    def _render_exam_coverage(self) -> str:
+        """Show the percent of the MCAT exam studied so far, broken down by
+        section. Hidden when there are no MCAT topics (e.g. a non-MCAT
+        collection), so ordinary Anki users are unaffected."""
+        coverage = self._render_data.exam_coverage
+        if not coverage.topics_total:
+            return ""
+
+        sections = "".join(
+            "<span class=exam-coverage-section>{name}: "
+            "<b>{percent:.0f}%</b></span>".format(
+                name=html.escape(section.section),
+                percent=section.percent,
+            )
+            for section in coverage.sections
+            if section.topics_total
+        )
+        note = (
+            "A section's topics count as studied once every card in them is "
+            "mastered (reviewed out to at least a 21-day interval). This is the "
+            "share of topics covered in each section."
+        )
+        return """
+<div id=examCoverage>
+  <div class=exam-coverage-headline>MCAT exam studied: <b>{overall:.0f}%</b></div>
+  <div class=exam-coverage-sections>{sections}</div>
+  <div class=exam-coverage-note>{note}</div>
+</div>
+""".format(
+            overall=coverage.overall_percent,
+            sections=sections,
+            note=note,
         )
 
     def _renderDeckTree(self, top: DeckTreeNode) -> str:
