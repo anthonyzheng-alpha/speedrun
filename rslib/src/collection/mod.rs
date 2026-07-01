@@ -152,6 +152,9 @@ pub struct CollectionState {
     /// identical backups.
     pub(crate) last_backup_modified: Option<TimestampMillis>,
     pub(crate) progress: Arc<Mutex<ProgressState>>,
+    /// Memoized topic-aware scheduling multipliers keyed by home deck id, built
+    /// lazily during answering/queue preview and cleared after each answer.
+    pub(crate) topic_weakness_cache: HashMap<DeckId, f32>,
 }
 
 pub struct Collection {

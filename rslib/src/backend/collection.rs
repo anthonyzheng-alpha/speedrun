@@ -23,7 +23,9 @@ impl BackendCollectionService for Backend {
             .set_server(self.server)
             .set_tr(self.tr.clone())
             .set_shared_progress_state(self.progress_state.clone())
-            .set_seed_initial_content(true);
+            // Don't seed starter content during Python unit tests, which assume
+            // freshly opened collections are empty.
+            .set_seed_initial_content(!*crate::PYTHON_UNIT_TESTS);
 
         *guard = Some(builder.build()?);
 

@@ -79,7 +79,10 @@ impl ReviewState {
         if let Some(states) = &ctx.fsrs_next_states {
             // In FSRS, fuzz is applied when the card leaves the relearning
             // stage
-            (states.again.interval, Some(states.again.memory.into()))
+            (
+                ctx.adjust_fsrs_interval(states.again.interval),
+                Some(states.again.memory.into()),
+            )
         } else {
             let (minimum, maximum) = ctx.min_and_max_review_intervals(ctx.minimum_lapse_interval);
             let interval = ctx.with_review_fuzz(
@@ -301,7 +304,7 @@ fn leech_threshold_met(lapses: u32, threshold: u32) -> bool {
 /// - Ensure it is at or below the configured maximum interval.
 fn constrain_passing_interval(ctx: &StateContext, interval: f32, minimum: u32, fuzz: bool) -> u32 {
     let interval = if ctx.fsrs_next_states.is_some() {
-        interval
+        ctx.adjust_fsrs_interval(interval)
     } else {
         interval * ctx.interval_multiplier
     };

@@ -184,6 +184,11 @@ message DeckConfig {
     bool bury_reviews = 28;
     bool bury_interday_learning = 29;
 
+    // When enabled (and FSRS is active), review intervals for cards in weaker
+    // topics (decks with a high recent again-rate) are shortened so they are
+    // brought back sooner. FSRS memory state is left untouched.
+    bool topic_aware_scheduling = 47;
+
     // for fsrs
     float desired_retention = 37;
     string ignore_revlogs_before_date = 46;

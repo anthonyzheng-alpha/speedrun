@@ -56,7 +56,11 @@ impl RelearnState {
             let (minimum, maximum) = ctx.min_and_max_review_intervals(1);
             let interval = states.again.interval;
             let again_review = ReviewState {
-                scheduled_days: ctx.with_review_fuzz(interval.round().max(1.0), minimum, maximum),
+                scheduled_days: ctx.with_review_fuzz(
+                    ctx.adjust_fsrs_interval(interval).round().max(1.0),
+                    minimum,
+                    maximum,
+                ),
                 memory_state,
                 ..self.review
             };
@@ -105,7 +109,11 @@ impl RelearnState {
             let (minimum, maximum) = ctx.min_and_max_review_intervals(1);
             let interval = states.hard.interval;
             let hard_review = ReviewState {
-                scheduled_days: ctx.with_review_fuzz(interval.round().max(1.0), minimum, maximum),
+                scheduled_days: ctx.with_review_fuzz(
+                    ctx.adjust_fsrs_interval(interval).round().max(1.0),
+                    minimum,
+                    maximum,
+                ),
                 memory_state,
                 ..self.review
             };
@@ -156,7 +164,11 @@ impl RelearnState {
             let (minimum, maximum) = ctx.min_and_max_review_intervals(1);
             let interval = states.good.interval;
             let good_review = ReviewState {
-                scheduled_days: ctx.with_review_fuzz(interval.round().max(1.0), minimum, maximum),
+                scheduled_days: ctx.with_review_fuzz(
+                    ctx.adjust_fsrs_interval(interval).round().max(1.0),
+                    minimum,
+                    maximum,
+                ),
                 memory_state,
                 ..self.review
             };
@@ -187,9 +199,10 @@ impl RelearnState {
     fn answer_easy(self, ctx: &StateContext) -> ReviewState {
         let scheduled_days = if let Some(states) = &ctx.fsrs_next_states {
             let (mut minimum, maximum) = ctx.min_and_max_review_intervals(1);
-            let good = ctx.with_review_fuzz(states.good.interval, minimum, maximum);
+            let good =
+                ctx.with_review_fuzz(ctx.adjust_fsrs_interval(states.good.interval), minimum, maximum);
             minimum = good + 1;
-            let interval = states.easy.interval;
+            let interval = ctx.adjust_fsrs_interval(states.easy.interval);
             ctx.with_review_fuzz(interval.round().max(1.0), minimum, maximum)
         } else {
             self.review.scheduled_days + 1

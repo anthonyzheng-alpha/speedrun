@@ -103,6 +103,29 @@ impl SqliteStorage {
             .map_err(Into::into)
     }
 
+    /// Count review/relearning revlog entries for cards belonging to the given
+    /// home deck since `cutoff_ms`, returning `(total, again)` where `again` is
+    /// the number of entries answered with the `Again` button. Used by
+    /// topic-aware scheduling to estimate a deck's recent again-rate.
+    pub(crate) fn topic_again_counts(
+        &self,
+        deck_id: DeckId,
+        cutoff_ms: i64,
+    ) -> Result<(u32, u32)> {
+        self.db
+            .prepare_cached(
+                "select count(*), coalesce(sum(revlog.ease = 1), 0)
+                 from revlog join cards on cards.id = revlog.cid
+                 where (cards.did = ?1 or cards.odid = ?1)
+                   and revlog.type in (1, 2)
+                   and revlog.id >= ?2",
+            )?
+            .query_row(params![deck_id, cutoff_ms], |row| {
+                Ok((row.get(0)?, row.get(1)?))
+            })
+            .map_err(Into::into)
+    }
+
     /// Only intended to be used by the undo code, as Anki can not sync revlog
     /// deletions.
     pub(crate) fn remove_revlog_entry(&self, id: RevlogId) -> Result<()> {

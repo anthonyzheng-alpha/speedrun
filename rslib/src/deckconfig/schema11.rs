@@ -388,6 +388,8 @@ impl From<DeckConfSchema11> for DeckConfig {
                 bury_new: c.new.bury,
                 bury_reviews: c.rev.bury,
                 bury_interday_learning: c.bury_interday_learning,
+                // Not represented in the legacy schema; defaults to off.
+                topic_aware_scheduling: false,
                 fsrs_params_4: c.fsrs_params_4,
                 fsrs_params_5: c.fsrs_params_5,
                 fsrs_params_6: c.fsrs_params_6,

@@ -307,6 +307,11 @@ deck-config-new-interval-tooltip = The multiplier applied to a review interval w
 deck-config-minimum-interval-tooltip = The minimum interval given to a review card after answering `Again`.
 deck-config-custom-scheduling = Custom scheduling
 deck-config-custom-scheduling-tooltip = Affects the entire collection. Use at your own risk!
+deck-config-topic-aware-scheduling = Topic-aware scheduling
+deck-config-topic-aware-scheduling-tooltip =
+    When enabled (and FSRS is active), review intervals for cards in weaker
+    topics (decks with a high recent again-rate) are shortened so they come
+    back for review sooner. Your FSRS memory estimates are left unchanged.
 
 ## Easy Days section.
 

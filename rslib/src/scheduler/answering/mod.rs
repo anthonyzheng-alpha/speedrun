@@ -7,6 +7,7 @@ mod preview;
 mod relearning;
 mod review;
 mod revlog;
+mod topic;
 
 use fsrs::NextStates;
 use fsrs::FSRS;
@@ -78,6 +79,9 @@ struct CardStateUpdater {
     desired_retention: Option<f32>,
     fsrs_short_term_with_steps: bool,
     fsrs_allow_short_term: bool,
+    /// Topic-aware scheduling multiplier for the card's home deck. `1.0` when
+    /// the feature is off or the topic is not weak.
+    topic_interval_multiplier: f32,
 }
 
 impl CardStateUpdater {
@@ -117,6 +121,7 @@ impl CardStateUpdater {
             fsrs_next_states: self.fsrs_next_states.clone(),
             fsrs_short_term_with_steps_enabled: self.fsrs_short_term_with_steps,
             fsrs_allow_short_term: self.fsrs_allow_short_term,
+            topic_interval_multiplier: self.topic_interval_multiplier,
         }
     }
 
@@ -384,6 +389,10 @@ impl Collection {
             )?;
         }
 
+        // The new revlog entry may change this topic's weakness, so drop the
+        // memoized multipliers.
+        self.clear_topic_weakness_cache();
+
         Ok(())
     }
 
@@ -452,6 +461,7 @@ impl Collection {
                 .get_deck(card.original_deck_id)?
                 .or_not_found(card.original_deck_id)?
         };
+        let home_deck_id = home_deck.id;
         let config = self
             .storage
             .get_deck_config(home_deck.config_id().or_invalid("home deck is filtered")?)?
@@ -513,6 +523,11 @@ impl Collection {
             .storage
             .get_deck(home_deck.id)?
             .or_not_found(home_deck.id)?;
+        let topic_interval_multiplier = if fsrs_enabled && config.inner.topic_aware_scheduling {
+            self.topic_interval_multiplier(home_deck_id)?
+        } else {
+            1.0
+        };
         Ok(CardStateUpdater {
             fuzz_seed: get_fuzz_seed(&card, false),
             card,
@@ -525,6 +540,7 @@ impl Collection {
             desired_retention,
             fsrs_short_term_with_steps,
             fsrs_allow_short_term,
+            topic_interval_multiplier,
         })
     }
 

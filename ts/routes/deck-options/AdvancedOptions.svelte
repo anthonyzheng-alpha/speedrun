@@ -19,6 +19,7 @@ License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
     import type { DeckOptionsState } from "./lib";
     import SpinBoxFloatRow from "./SpinBoxFloatRow.svelte";
     import SpinBoxRow from "./SpinBoxRow.svelte";
+    import SwitchRow from "$lib/components/SwitchRow.svelte";
     import DateInput from "./DateInput.svelte";
     import Warning from "./Warning.svelte";
     import { getIgnoredBeforeCount } from "@generated/backend";
@@ -83,6 +84,11 @@ License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
             help: tr.deckConfigCustomSchedulingTooltip(),
             url: "https://faqs.ankiweb.net/the-2021-scheduler.html#add-ons-and-custom-scheduling",
             global: true,
+        },
+        topicAwareScheduling: {
+            title: tr.deckConfigTopicAwareScheduling(),
+            help: tr.deckConfigTopicAwareSchedulingTooltip(),
+            sched: HelpItemScheduler.FSRS,
         },
     };
     const helpSections: HelpItem[] = Object.values(settings);
@@ -320,6 +326,22 @@ License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
                     warning={ignoreRevlogsBeforeWarning}
                     className={ignoreRevlogsBeforeWarningClass}
                 ></Warning>
+            </Item>
+
+            <Item>
+                <SwitchRow
+                    bind:value={$config.topicAwareScheduling}
+                    defaultValue={defaults.topicAwareScheduling}
+                >
+                    <SettingTitle
+                        on:click={() =>
+                            openHelpModal(
+                                Object.keys(settings).indexOf("topicAwareScheduling"),
+                            )}
+                    >
+                        {settings.topicAwareScheduling.title}
+                    </SettingTitle>
+                </SwitchRow>
             </Item>
         {/if}
 

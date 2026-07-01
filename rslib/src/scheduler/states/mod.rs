@@ -103,6 +103,10 @@ pub(crate) struct StateContext<'a> {
     pub maximum_review_interval: u32,
     pub leech_threshold: u32,
     pub load_balancer_ctx: Option<LoadBalancerContext<'a>>,
+    /// Topic-aware scheduling multiplier applied to FSRS intervals. `1.0` means
+    /// no adjustment (feature off or topic not weak). Values below `1.0` bring
+    /// weaker topics back sooner without touching FSRS memory state.
+    pub topic_interval_multiplier: f32,
 
     // relearning
     pub relearn_steps: LearningSteps<'a>,
@@ -124,6 +128,14 @@ impl StateContext<'_> {
         (minimum, maximum)
     }
 
+    /// Apply the topic-aware scheduling multiplier to an FSRS-computed interval
+    /// (in days). When the feature is off, the multiplier is `1.0`, so this is
+    /// a no-op. This intentionally only scales the interval; FSRS memory state
+    /// (stability/difficulty) is assigned separately and left untouched.
+    pub(crate) fn adjust_fsrs_interval(&self, interval: f32) -> f32 {
+        interval * self.topic_interval_multiplier
+    }
+
     #[cfg(test)]
     pub(crate) fn defaults_for_testing() -> Self {
         Self {
@@ -138,6 +150,7 @@ impl StateContext<'_> {
             maximum_review_interval: 36500,
             leech_threshold: 8,
             load_balancer_ctx: None,
+            topic_interval_multiplier: 1.0,
             relearn_steps: LearningSteps::new(&[10.0]),
             lapse_multiplier: 0.0,
             minimum_lapse_interval: 1,

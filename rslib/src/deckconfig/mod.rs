@@ -74,6 +74,7 @@ const DEFAULT_DECK_CONFIG_INNER: DeckConfigInner = DeckConfigInner {
     bury_new: false,
     bury_reviews: false,
     bury_interday_learning: false,
+    topic_aware_scheduling: false,
     fsrs_params_4: vec![],
     fsrs_params_5: vec![],
     fsrs_params_6: vec![],
