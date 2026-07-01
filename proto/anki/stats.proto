@@ -68,6 +68,30 @@ message CardStatsResponse {
   optional string original_deck = 22;
   optional float desired_retention = 23;
   repeated float fsrs_params = 24;
+  // The memory model's estimate of the chance the user recalls this fact.
+  optional CardMemoryEstimate memory_estimate = 25;
+}
+
+// Memory model output for a single card: the estimated chance (0-100) the user
+// recalls the fact, with an honesty envelope (range + confidence) derived from
+// how much review history backs the estimate.
+message CardMemoryEstimate {
+  // False when there isn't enough review history to state a number
+  // confidently; in that case the numeric fields are unset and only
+  // `justification` is meaningful.
+  bool has_enough_data = 1;
+  // Point estimate of recall chance, 0-100.
+  float score = 2;
+  // Lower bound of the plausible range, 0-100.
+  float range_min = 3;
+  // Upper bound of the plausible range, 0-100.
+  float range_max = 4;
+  // How confident the estimate is, 0-100 (wider range -> lower confidence).
+  float confidence = 5;
+  // Unix timestamp (seconds) of the last review the estimate is based on.
+  int64 last_updated = 6;
+  // Short human-readable explanation of the estimate.
+  string justification = 7;
 }
 
 message GraphsRequest {

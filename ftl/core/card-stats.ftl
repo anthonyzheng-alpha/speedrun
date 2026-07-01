@@ -37,6 +37,15 @@ card-stats-fsrs-forgetting-curve-first-year = First Year
 card-stats-fsrs-forgetting-curve-all-time = All Time
 card-stats-fsrs-forgetting-curve-desired-retention = Desired Retention
 
+## Memory model
+
+card-stats-memory-title = Memory
+card-stats-memory-recall-chance = Recall chance
+card-stats-memory-range = Range
+card-stats-memory-confidence = Confidence
+card-stats-memory-last-updated = Last updated
+card-stats-memory-insufficient = Not enough data yet to estimate recall.
+
 ## Window Titles
 
 card-stats-current-card = Current Card ({ $context })

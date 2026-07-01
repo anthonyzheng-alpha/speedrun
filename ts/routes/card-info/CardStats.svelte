@@ -94,6 +94,37 @@ License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
             }
         }
 
+        if (stats.memoryEstimate) {
+            const mem = stats.memoryEstimate;
+            if (mem.hasEnoughData) {
+                statsRows.push({
+                    label: tr2.cardStatsMemoryRecallChance(),
+                    value: `${mem.score.toFixed(0)}%`,
+                });
+                statsRows.push({
+                    label: tr2.cardStatsMemoryRange(),
+                    value: `${mem.rangeMin.toFixed(0)}%–${mem.rangeMax.toFixed(0)}%`,
+                });
+                statsRows.push({
+                    label: tr2.cardStatsMemoryConfidence(),
+                    value: `${mem.confidence.toFixed(0)}%`,
+                });
+                statsRows.push({
+                    label: tr2.cardStatsMemoryLastUpdated(),
+                    value: dateString(mem.lastUpdated),
+                });
+                statsRows.push({
+                    label: tr2.cardStatsMemoryTitle(),
+                    value: mem.justification,
+                });
+            } else {
+                statsRows.push({
+                    label: tr2.cardStatsMemoryRecallChance(),
+                    value: mem.justification || tr2.cardStatsMemoryInsufficient(),
+                });
+            }
+        }
+
         statsRows.push({ label: tr2.cardStatsReviewCount(), value: stats.reviews });
         statsRows.push({ label: tr2.cardStatsLapseCount(), value: stats.lapses });
 

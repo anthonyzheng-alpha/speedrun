@@ -3,6 +3,7 @@
 
 mod card;
 mod graphs;
+mod memory;
 mod service;
 mod today;
 

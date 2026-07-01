@@ -3,14 +3,14 @@
 
 import time
 
+from anki.cards import FSRSMemoryState
+from anki.consts import CARD_TYPE_REV, QUEUE_TYPE_REV
+from anki.decks import UpdateDeckConfigs, UpdateDeckConfigsMode
+
 # Import the test helper first so the `anki` namespace package is entered via
 # `anki.collection`, avoiding an import cycle that occurs if `anki.cards` is the
 # first submodule imported.
 from tests.shared import getEmptyCol
-
-from anki.cards import FSRSMemoryState
-from anki.consts import CARD_TYPE_REV, QUEUE_TYPE_REV
-from anki.decks import UpdateDeckConfigs, UpdateDeckConfigsMode
 
 
 def _good_interval(col, card_id) -> int:

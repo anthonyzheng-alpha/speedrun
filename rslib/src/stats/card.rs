@@ -4,6 +4,7 @@
 use fsrs::FSRS;
 use fsrs::FSRS5_DEFAULT_DECAY;
 
+use super::memory::memory_estimate;
 use crate::card::CardType;
 use crate::card::FsrsMemoryState;
 use crate::prelude::*;
@@ -60,6 +61,20 @@ impl Collection {
                 )
             });
 
+        // Memory model: reuse the FSRS point estimate and back it with the
+        // card's rated review history (Again == 1 counts as not recalled).
+        let rated_reviews = revlog.iter().filter(|e| e.has_rating()).count() as u32;
+        let recalled = revlog
+            .iter()
+            .filter(|e| e.has_rating() && e.button_chosen >= 2)
+            .count() as u32;
+        let memory_estimate = Some(memory_estimate(
+            fsrs_retrievability,
+            rated_reviews,
+            recalled,
+            last_review_time.0,
+        ));
+
         let original_deck = if card.original_deck_id == DeckId(0) {
             deck.clone()
         } else {
@@ -107,6 +122,7 @@ impl Collection {
                 None
             },
             desired_retention: card.desired_retention,
+            memory_estimate,
         })
     }
 
