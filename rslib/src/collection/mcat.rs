@@ -41,14 +41,6 @@ const MCAT_SECTIONS: &[Section] = &[
                 "S phase (synthesis phase) of interphase.",
             ),
             (
-                "What is the net ATP yield of glycolysis per glucose molecule?",
-                "2 ATP (net), along with 2 NADH and 2 pyruvate.",
-            ),
-            (
-                "Where does the citric acid (Krebs) cycle occur in eukaryotes?",
-                "The mitochondrial matrix.",
-            ),
-            (
                 "What type of bond links amino acids together in a protein?",
                 "A peptide (amide) bond.",
             ),
@@ -262,7 +254,7 @@ const MCAT_SECTIONS: &[Section] = &[
             ),
             (
                 "Which neurotransmitters do the two divisions of the autonomic nervous system use?",
-                "The sympathetic system drives fight-or-flight using epinephrine and norepinephrine at postganglionic synapses. The parasympathetic system promotes rest-and-digest using acetylcholine at both ganglia.",
+                "All preganglionic neurons of both divisions release acetylcholine. Sympathetic (fight-or-flight) postganglionic neurons then release norepinephrine at target organs, while parasympathetic (rest-and-digest) postganglionic neurons release acetylcholine. Epinephrine is released as a hormone from the adrenal medulla, not at a postganglionic synapse.",
             ),
         ],
     ),
@@ -278,20 +270,12 @@ const MCAT_SECTIONS: &[Section] = &[
                 "PV = nRT, where P is pressure, V is volume, n is moles, R is the gas constant, and T is absolute temperature.",
             ),
             (
-                "Define pH in terms of hydrogen ion concentration.",
-                "pH = -log10[H+].",
-            ),
-            (
                 "What distinguishes an exothermic from an endothermic reaction?",
                 "Exothermic reactions release heat (negative delta H); endothermic reactions absorb heat (positive delta H).",
             ),
             (
                 "What is the difference between a strong and weak acid?",
                 "A strong acid fully dissociates in water; a weak acid only partially dissociates (has an equilibrium described by Ka).",
-            ),
-            (
-                "State Ohm's law.",
-                "V = IR; voltage equals current times resistance.",
             ),
             (
                 "What is the SI unit of force and how is it defined?",
@@ -304,10 +288,6 @@ const MCAT_SECTIONS: &[Section] = &[
             (
                 "What is the relationship between wavelength and frequency of light?",
                 "c = (lambda)(f); the speed of light equals wavelength times frequency, so they are inversely related.",
-            ),
-            (
-                "Define an enantiomer.",
-                "Stereoisomers that are nonsuperimposable mirror images of each other.",
             ),
             (
                 "How is pH defined in terms of hydrogen ion concentration?",
@@ -1097,8 +1077,6 @@ pub(crate) const MCAT_TOPICS: &[SectionTopics] = &[
             (
                 "Glycolysis & Cellular Respiration",
                 &[
-                    "What is the net ATP yield of glycolysis per glucose molecule?",
-                    "Where does the citric acid (Krebs) cycle occur in eukaryotes?",
                     "What is the net yield of glycolysis per glucose?",
                     "What is the rate-limiting enzyme of glycolysis and how is it regulated?",
                     "Where does the citric acid cycle occur and what does it produce per acetyl-CoA?",
@@ -1152,7 +1130,6 @@ pub(crate) const MCAT_TOPICS: &[SectionTopics] = &[
             (
                 "Acids, Bases & Buffers",
                 &[
-                    "Define pH in terms of hydrogen ion concentration.",
                     "What is the difference between a strong and weak acid?",
                     "How is pH defined in terms of hydrogen ion concentration?",
                     "What is the relationship between pH and pOH at 25 C?",
@@ -1218,7 +1195,6 @@ pub(crate) const MCAT_TOPICS: &[SectionTopics] = &[
             (
                 "Organic Chemistry",
                 &[
-                    "Define an enantiomer.",
                     "How do you identify a carbonyl group and name two functional groups containing it?",
                     "What are enantiomers and how do they differ physically?",
                     "What characterizes an SN2 reaction mechanism?",
@@ -1246,7 +1222,6 @@ pub(crate) const MCAT_TOPICS: &[SectionTopics] = &[
             (
                 "Electricity & Magnetism",
                 &[
-                    "State Ohm's law.",
                     "State Coulomb's law for the force between two point charges.",
                     "How is electric field related to force on a charge?",
                     "State Ohm's law and the formula for electrical power.",

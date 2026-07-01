@@ -1,0 +1,2163 @@
+{
+  "summary": {
+    "total": 238,
+    "by_deck": {
+      "MCAT::Biology & Biochemistry": 58,
+      "MCAT::Chemistry & Physics": 63,
+      "MCAT::Psychology & Sociology": 61,
+      "MCAT::Critical Analysis & Reasoning (CARS)": 56
+    },
+    "duplicates_flagged": 7
+  },
+  "cards": [
+    {
+      "id": 1,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 28,
+      "front": "What are the four levels of protein structure?",
+      "back": "Primary (amino acid sequence), secondary (alpha helices / beta sheets), tertiary (3D folding), and quaternary (multiple subunits).",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 2,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 32,
+      "front": "Which enzyme unwinds the DNA double helix during replication?",
+      "back": "Helicase.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 3,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 36,
+      "front": "What is the role of the enzyme telomerase?",
+      "back": "It adds repetitive nucleotide sequences to the ends of chromosomes (telomeres) to prevent their shortening during replication.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 4,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 40,
+      "front": "During which phase of the cell cycle is DNA replicated?",
+      "back": "S phase (synthesis phase) of interphase.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 5,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 44,
+      "front": "What type of bond links amino acids together in a protein?",
+      "back": "A peptide (amide) bond.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 6,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 48,
+      "front": "What is the difference between competitive and noncompetitive enzyme inhibition?",
+      "back": "Competitive inhibitors bind the active site (raising Km, Vmax unchanged); noncompetitive inhibitors bind an allosteric site (Vmax decreases, Km unchanged).",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 7,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 52,
+      "front": "Which hormone lowers blood glucose, and where is it produced?",
+      "back": "Insulin, produced by the beta cells of the pancreatic islets of Langerhans.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 8,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 56,
+      "front": "What is the central dogma of molecular biology?",
+      "back": "DNA is transcribed into RNA, which is translated into protein (DNA -> RNA -> protein).",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 9,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 60,
+      "front": "What four groups are attached to the central alpha carbon of an amino acid?",
+      "back": "An amino group, a carboxylic acid group, a hydrogen atom, and a variable R group. The R group determines the amino acid's properties.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 10,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 64,
+      "front": "What is the isoelectric point (pI) of an amino acid?",
+      "back": "The pH at which the amino acid exists as a neutral zwitterion with no net charge. For a neutral side chain, pI is the average of the two relevant pKa values.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 11,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 68,
+      "front": "Which amino acid is the only achiral one, and what configuration do the chiral ones have?",
+      "back": "Glycine is the only achiral amino acid. All chiral amino acids in eukaryotic proteins are L (S configuration) except cysteine, which is L but R.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 12,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 72,
+      "front": "What stabilizes the secondary structure of a protein?",
+      "back": "Hydrogen bonding between backbone amino (N-H) and nonadjacent carbonyl (C=O) groups. Common forms are the alpha helix and beta pleated sheet.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 13,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 76,
+      "front": "What bond forms cystine, and how does it stabilize tertiary structure?",
+      "back": "A disulfide bond forms when two cysteine thiol groups are oxidized, creating a covalent link. This helps stabilize a protein's three dimensional shape.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 14,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 80,
+      "front": "Why does burying hydrophobic R groups in a protein's core favor folding?",
+      "back": "It releases ordered water from the solvation layer, increasing the entropy of surrounding water. This makes the overall Gibbs free energy of folding negative.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 15,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 84,
+      "front": "Do enzymes change the delta G or equilibrium of a reaction?",
+      "back": "No. Enzymes only lower activation energy and speed up the rate; they do not alter delta G, delta H, or the final equilibrium position. They catalyze both forward and reverse reactions.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 16,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 88,
+      "front": "What does the Michaelis constant Km represent?",
+      "back": "Km is the substrate concentration at which an enzyme operates at half its Vmax. A lower Km means higher affinity for the substrate.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 17,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 92,
+      "front": "How does competitive inhibition affect Vmax and Km?",
+      "back": "Vmax is unchanged and Km increases. The inhibitor resembles the substrate and binds the active site, so it can be overcome by adding more substrate.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 18,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 96,
+      "front": "How does noncompetitive inhibition affect Vmax and Km?",
+      "back": "Vmax decreases and Km is unchanged. The inhibitor binds equally well to the free enzyme and the enzyme-substrate complex at an allosteric site.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 19,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 100,
+      "front": "How does uncompetitive inhibition affect Vmax and Km?",
+      "back": "Both Vmax and Km decrease. The inhibitor binds only to the enzyme-substrate complex.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 20,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 104,
+      "front": "What is a zymogen?",
+      "back": "An inactive enzyme precursor that is secreted in an inactive form and later activated by cleavage. Examples include pepsinogen and trypsinogen.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 21,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 108,
+      "front": "What does phosphorylation do to catabolic versus anabolic enzymes?",
+      "back": "In catabolism the phosphorylated form is usually active; in anabolism the phosphorylated form is usually inactive. This lets hormones coordinate opposing pathways.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 22,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 112,
+      "front": "State Chargaff's rules for DNA base composition.",
+      "back": "The amount of purines equals the amount of pyrimidines, so A equals T and G equals C. Purines are adenine and guanine; pyrimidines are cytosine, thymine, and uracil.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 23,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 116,
+      "front": "What does it mean that DNA replication is semiconservative?",
+      "back": "Each new double helix contains one original parental strand and one newly synthesized strand. Replication occurs during the S phase of the cell cycle.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 24,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 120,
+      "front": "How does nucleotide excision repair fix thymine dimers?",
+      "back": "An excision endonuclease removes a short stretch of the helix-distorting lesion in a cut-and-patch process. DNA polymerase and ligase then fill and seal the gap.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 25,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 124,
+      "front": "What are telomeres and how are they maintained?",
+      "back": "Telomeres are repetitive GC-rich ends of chromosomes that prevent DNA unraveling and are shortened each replication. Telomerase can partially restore them.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 26,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 128,
+      "front": "What are the start and stop codons of the genetic code?",
+      "back": "The start codon is AUG, which codes for methionine. The three stop codons are UAA, UGA, and UAG.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 27,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 132,
+      "front": "What does it mean that the genetic code is degenerate?",
+      "back": "Multiple codons can encode the same amino acid, often differing only in the third wobble base. This lets many point mutations be silent.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 28,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 136,
+      "front": "What happens to introns and exons during mRNA processing?",
+      "back": "Introns are spliced out and remain in the nucleus, while exons are joined and exported as mature mRNA. A 5-prime cap and poly-A tail are also added for stability.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 29,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 140,
+      "front": "In translation, what happens at the A, P, and E sites of the ribosome?",
+      "back": "A new aminoacyl-tRNA enters the A site, the growing polypeptide is held in the P site, and the uncharged tRNA exits from the E site. The A site tRNA then shifts to the P site.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 30,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 144,
+      "front": "How does an inducible operon like the lac operon work?",
+      "back": "Normally a repressor is bound to the operator, blocking transcription. An inducer binds and removes the repressor, turning the genes on.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 31,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 148,
+      "front": "How does a repressible operon like the trp operon work?",
+      "back": "The genes are normally transcribed, but a corepressor binds the repressor and the complex binds the operator to shut transcription off. High tryptophan acts as the corepressor.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 32,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 152,
+      "front": "Contrast oncogenes and tumor suppressor genes.",
+      "back": "Oncogenes arise from mutated proto-oncogenes and promote cell cycling, like a stuck gas pedal. Mutated tumor suppressor genes fail to slow division or repair DNA, like cut brakes.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 33,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 156,
+      "front": "State Mendel's law of segregation.",
+      "back": "An organism has two alleles per gene that separate during anaphase I of meiosis. As a result each gamete carries only one allele for a trait.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 34,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 160,
+      "front": "What is the difference between codominance and incomplete dominance?",
+      "back": "In codominance both alleles are fully and separately expressed, like AB blood type. In incomplete dominance the heterozygote shows a blended intermediate phenotype.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 35,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 164,
+      "front": "Give the Hardy-Weinberg equations and what p and q represent.",
+      "back": "p + q = 1 and p^2 + 2pq + q^2 = 1, where p is the dominant allele frequency and q is the recessive allele frequency. They hold only when a population is not evolving.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 36,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 168,
+      "front": "What experiment confirmed that DNA, not protein, is the genetic material?",
+      "back": "The Hershey-Chase experiment showed that only radiolabeled DNA from bacteriophages entered infected bacteria. Griffith and Avery-MacLeod-McCarty earlier pointed to DNA via transformation.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 37,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 172,
+      "front": "What is the net yield of glycolysis per glucose?",
+      "back": "Glucose plus 2 NAD+ and 2 ADP yields 2 pyruvate, 2 ATP, and 2 NADH. It occurs in the cytoplasm.",
+      "jw_book": "biochemistry",
+      "status": "pending",
+      "duplicate_cluster": "glycolysis net ATP"
+    },
+    {
+      "id": 38,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 176,
+      "front": "What is the rate-limiting enzyme of glycolysis and how is it regulated?",
+      "back": "Phosphofructokinase-1 (PFK-1) is rate limiting. It is activated by AMP and fructose 2,6-bisphosphate and inhibited by ATP and citrate.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 39,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 180,
+      "front": "Where does the citric acid cycle occur and what does it produce per acetyl-CoA?",
+      "back": "It occurs in the mitochondrial matrix. Each acetyl-CoA yields 3 NADH, 1 FADH2, 1 GTP, and 2 CO2.",
+      "jw_book": "biochemistry",
+      "status": "pending",
+      "duplicate_cluster": "citric acid cycle location"
+    },
+    {
+      "id": 40,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 184,
+      "front": "What is the rate-limiting enzyme of the citric acid cycle?",
+      "back": "Isocitrate dehydrogenase. It is inhibited by ATP and NADH and activated by ADP and NAD+.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 41,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 188,
+      "front": "How does ATP synthase generate ATP in oxidative phosphorylation?",
+      "back": "The proton-motive force drives H+ back into the matrix through the Fo channel, and the F1 portion uses that energy to phosphorylate ADP into ATP. This is chemiosmotic coupling.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 42,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 192,
+      "front": "What is the final electron acceptor of the electron transport chain?",
+      "back": "Oxygen, which has the highest reduction potential, accepts electrons at Complex IV to form water. Complexes I, III, and IV pump protons across the inner membrane.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 43,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 196,
+      "front": "Which enzymes bypass the irreversible steps of glycolysis in gluconeogenesis?",
+      "back": "Pyruvate carboxylase and PEPCK bypass pyruvate kinase, fructose-1,6-bisphosphatase bypasses PFK-1, and glucose-6-phosphatase bypasses hexokinase. It occurs mainly in the liver.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 44,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 200,
+      "front": "What glycosidic bonds do glycogen synthase and the branching enzyme create?",
+      "back": "Glycogen synthase forms alpha-1,4 bonds along the chain, and the branching enzyme forms alpha-1,6 bonds at branch points. Glycogen is stored mainly in liver and muscle.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 45,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 204,
+      "front": "What is the main product and rate-limiting enzyme of the pentose phosphate pathway?",
+      "back": "It produces NADPH and sugars for biosynthesis in the cytoplasm. Glucose-6-phosphate dehydrogenase (G6PD) is the rate-limiting enzyme.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 46,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 208,
+      "front": "Describe the steps of beta-oxidation of fatty acids.",
+      "back": "In the mitochondria, cycles of oxidation, hydration, oxidation, and thiolytic cleavage shorten the fatty acid by two carbons each round. Each cycle yields FADH2, NADH, and acetyl-CoA.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 47,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 212,
+      "front": "When and where are ketone bodies produced?",
+      "back": "They form in the liver via ketogenesis when excess acetyl-CoA accumulates during prolonged starvation. The brain can derive up to two-thirds of its energy from ketone bodies during starvation.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 48,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 216,
+      "front": "Which amino acids are solely ketogenic?",
+      "back": "Leucine and lysine are the only purely ketogenic amino acids. All other amino acids are at least partly glucogenic.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 49,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 220,
+      "front": "Why is ATP hydrolysis energetically favorable?",
+      "back": "Its high-energy phosphate bonds are stabilized upon hydrolysis by resonance, ionization, and relief of charge repulsion, giving a large negative delta G. ATP is considered a mid-level energy carrier.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 50,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 224,
+      "front": "What organelles define eukaryotic cells and where does the ETC occur in each cell type?",
+      "back": "Eukaryotes have membrane-bound organelles including a nucleus and mitochondria, and run the ETC on the inner mitochondrial membrane. Prokaryotes lack these organelles and run the ETC in the cell membrane.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 51,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 228,
+      "front": "Compare the rough and smooth endoplasmic reticulum.",
+      "back": "The rough ER is studded with ribosomes and makes secreted and membrane proteins. The smooth ER makes lipids and handles detoxification.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 52,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 232,
+      "front": "Distinguish gap junctions, tight junctions, and desmosomes.",
+      "back": "Gap junctions allow rapid exchange of ions between cells, tight junctions seal the space between cells to block leakage, and desmosomes anchor adjacent cells via their cytoskeletons.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 53,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 236,
+      "front": "How does the Na+/K+ pump move ions and what type of transport is it?",
+      "back": "It pumps 3 Na+ out and 2 K+ in against their gradients using ATP, making it primary active transport. This maintains the resting membrane potential.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 54,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 240,
+      "front": "Distinguish gram-positive and gram-negative bacteria.",
+      "back": "Gram-positive bacteria stain purple and have a thick peptidoglycan cell wall. Gram-negative bacteria stain pink-red with a thin peptidoglycan layer plus an outer membrane.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 55,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 244,
+      "front": "What is a retrovirus and what enzyme does it require?",
+      "back": "A retrovirus is a single-stranded RNA virus that uses reverse transcriptase to make DNA from its RNA genome. That DNA can then integrate into the host genome.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 56,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 248,
+      "front": "Contrast the lytic and lysogenic bacteriophage life cycles.",
+      "back": "In the lytic cycle virions are produced until the host cell bursts. In the lysogenic cycle the viral genome integrates as a prophage and stays dormant until stress activates it.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 57,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 252,
+      "front": "What are the three primary germ layers and one derivative of each?",
+      "back": "Ectoderm forms skin and nervous system, mesoderm forms muscle, bone, and the circulatory system, and endoderm forms the gut lining and internal organs. They arise during gastrulation.",
+      "jw_book": "biochemistry",
+      "status": "pending"
+    },
+    {
+      "id": 58,
+      "deck": "MCAT::Biology & Biochemistry",
+      "line": 256,
+      "front": "Which neurotransmitters do the two divisions of the autonomic nervous system use?",
+      "back": "All preganglionic neurons of both divisions release acetylcholine. Sympathetic (fight-or-flight) postganglionic neurons then release norepinephrine at target organs, while parasympathetic (rest-and-digest) postganglionic neurons release acetylcholine. Epinephrine is released as a hormone from the adrenal medulla, not at a postganglionic synapse.",
+      "jw_book": "biochemistry",
+      "status": "pending",
+      "duplicate_cluster": "sympathetic vs parasympathetic"
+    },
+    {
+      "id": 59,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 265,
+      "front": "State Newton's second law of motion.",
+      "back": "F = ma; the net force on an object equals its mass times its acceleration.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 60,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 269,
+      "front": "What is the ideal gas law?",
+      "back": "PV = nRT, where P is pressure, V is volume, n is moles, R is the gas constant, and T is absolute temperature.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 61,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 273,
+      "front": "What distinguishes an exothermic from an endothermic reaction?",
+      "back": "Exothermic reactions release heat (negative delta H); endothermic reactions absorb heat (positive delta H).",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 62,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 277,
+      "front": "What is the difference between a strong and weak acid?",
+      "back": "A strong acid fully dissociates in water; a weak acid only partially dissociates (has an equilibrium described by Ka).",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 63,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 281,
+      "front": "What is the SI unit of force and how is it defined?",
+      "back": "The newton (N), equal to 1 kg*m/s^2.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 64,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 285,
+      "front": "What does a catalyst do to a chemical reaction?",
+      "back": "It lowers the activation energy, increasing the reaction rate without being consumed; it does not change the equilibrium position.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 65,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 289,
+      "front": "What is the relationship between wavelength and frequency of light?",
+      "back": "c = (lambda)(f); the speed of light equals wavelength times frequency, so they are inversely related.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 66,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 293,
+      "front": "How is pH defined in terms of hydrogen ion concentration?",
+      "back": "pH = -log[H+]. A one-unit drop in pH corresponds to a tenfold increase in [H+], and at 25 C a neutral solution has pH 7.",
+      "jw_book": "general-chemistry",
+      "status": "pending",
+      "duplicate_cluster": "pH definition"
+    },
+    {
+      "id": 67,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 297,
+      "front": "What is the relationship between pH and pOH at 25 C?",
+      "back": "pH + pOH = 14, because Kw = [H+][OH-] = 1.0 x 10^-14 at 25 C.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 68,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 301,
+      "front": "What does the Henderson-Hasselbalch equation state for a buffer?",
+      "back": "pH = pKa + log([A-]/[HA]). When [A-] equals [HA], the pH equals the pKa.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 69,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 305,
+      "front": "What makes a solution a good buffer and where is it most effective?",
+      "back": "A buffer contains comparable amounts of a weak acid and its conjugate base, and it resists pH change most effectively within about one pH unit of the pKa.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 70,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 309,
+      "front": "Name the common strong acids that fully dissociate in water.",
+      "back": "HCl, HBr, HI, HNO3, H2SO4, and HClO4 are strong acids that dissociate essentially completely.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 71,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 313,
+      "front": "What relationship links Ka and Kb of a conjugate acid-base pair?",
+      "back": "Ka x Kb = Kw = 1.0 x 10^-14 at 25 C, so a stronger acid has a weaker conjugate base.",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 72,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 317,
+      "front": "What are the conditions defined as STP and the molar volume of an ideal gas there?",
+      "back": "STP is 0 C (273.15 K) and 1 atm; one mole of ideal gas occupies about 22.4 L under these conditions.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 73,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 321,
+      "front": "What does Dalton's law of partial pressures state?",
+      "back": "The total pressure of a gas mixture equals the sum of the partial pressures of its components, and each partial pressure equals its mole fraction times total pressure.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 74,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 325,
+      "front": "How do electronegativity and atomic radius trend across the periodic table?",
+      "back": "Electronegativity increases up and to the right, while atomic radius increases down and to the left toward larger, less tightly held atoms.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 75,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 329,
+      "front": "How does first ionization energy trend on the periodic table?",
+      "back": "Ionization energy generally increases across a period and decreases down a group, mirroring electronegativity and opposing atomic size.",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 76,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 333,
+      "front": "What do the four quantum numbers n, l, ml, and ms describe?",
+      "back": "n is the principal energy level, l is the subshell shape, ml is the orbital orientation, and ms is the electron spin (+1/2 or -1/2).",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 77,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 337,
+      "front": "What does Le Chatelier's principle predict when a system at equilibrium is stressed?",
+      "back": "The system shifts to counteract the change; adding reactant or removing product shifts it toward products, and vice versa.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 78,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 341,
+      "front": "How is the equilibrium constant Keq written for aA + bB -> cC + dD?",
+      "back": "Keq = ([C]^c [D]^d) / ([A]^a [B]^b), using equilibrium concentrations; pure solids and liquids are omitted.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 79,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 345,
+      "front": "What is the reaction quotient Q used for?",
+      "back": "Q has the same form as Keq but uses current concentrations; if Q < Keq the reaction proceeds forward, and if Q > Keq it proceeds in reverse.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 80,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 349,
+      "front": "What does the order of a reaction tell you about rate dependence?",
+      "back": "The order in a reactant is the exponent on its concentration in the rate law; overall order is the sum of exponents and is determined experimentally, not from stoichiometry.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 81,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 353,
+      "front": "What determines whether a reaction is spontaneous according to Gibbs free energy?",
+      "back": "delta G = delta H - T(delta S); a reaction is spontaneous when delta G is negative.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 82,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 357,
+      "front": "When is a reaction spontaneous at all temperatures based on enthalpy and entropy?",
+      "back": "When delta H is negative and delta S is positive, delta G is negative at every temperature, so the reaction is always spontaneous.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 83,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 361,
+      "front": "What does Hess's law allow you to do?",
+      "back": "It states that the total enthalpy change of a reaction is the sum of the enthalpy changes of its steps, since enthalpy is a state function independent of path.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 84,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 365,
+      "front": "In a galvanic (voltaic) cell, what happens at the anode and cathode?",
+      "back": "Oxidation occurs at the anode and reduction occurs at the cathode; electrons flow from anode to cathode through the external wire.",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 85,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 369,
+      "front": "How is cell potential related to spontaneity and free energy?",
+      "back": "delta G = -nFE; a positive cell EMF corresponds to negative delta G and a spontaneous (galvanic) reaction.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 86,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 373,
+      "front": "What is the sign convention for the electrodes in an electrolytic cell?",
+      "back": "In electrolysis the anode is positive and the cathode is negative, and a non-spontaneous reaction is driven by an external power source.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 87,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 377,
+      "front": "State the basic rules for assigning oxidation numbers.",
+      "back": "Free elements are 0, oxygen is usually -2, hydrogen is usually +1, and the sum of oxidation numbers equals the overall charge of the species.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 88,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 381,
+      "front": "What are colligative properties and give examples?",
+      "back": "Colligative properties depend on the number of solute particles, not their identity; examples include boiling point elevation, freezing point depression, and osmotic pressure.",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 89,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 385,
+      "front": "What does the solubility product Ksp represent?",
+      "back": "Ksp is the equilibrium constant for a slightly soluble salt dissolving into its ions; a solid precipitates when the ion product exceeds Ksp.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 90,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 389,
+      "front": "What is the common ion effect?",
+      "back": "Adding an ion already present in a solubility equilibrium shifts it toward the solid, decreasing the salt's solubility (a Le Chatelier effect).",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 91,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 393,
+      "front": "What defines the equivalence point of an acid-base titration?",
+      "back": "It is where moles of added titrant exactly neutralize the analyte; for a strong acid-strong base titration the equivalence point pH is 7.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 92,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 397,
+      "front": "How do you identify a carbonyl group and name two functional groups containing it?",
+      "back": "A carbonyl is a C double bonded to O; aldehydes have the carbonyl at a chain end (bonded to H) while ketones have it between two carbons.",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 93,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 401,
+      "front": "What are enantiomers and how do they differ physically?",
+      "back": "Enantiomers are non-superimposable mirror-image stereoisomers; they share most physical properties but rotate plane-polarized light in opposite directions.",
+      "jw_book": "organic-chemistry",
+      "status": "pending",
+      "duplicate_cluster": "enantiomers"
+    },
+    {
+      "id": 94,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 405,
+      "front": "What characterizes an SN2 reaction mechanism?",
+      "back": "SN2 is a one-step, concerted reaction that is second order overall, favored by strong nucleophiles and unhindered (methyl or primary) substrates, and it inverts stereochemistry.",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 95,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 409,
+      "front": "What characterizes an SN1 reaction mechanism?",
+      "back": "SN1 is a two-step reaction, first order in substrate, that proceeds through a carbocation intermediate; it is favored by tertiary substrates and gives racemization.",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 96,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 413,
+      "front": "What is the difference between a nucleophile and an electrophile?",
+      "back": "A nucleophile is electron-rich and donates an electron pair, while an electrophile is electron-poor and accepts an electron pair.",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 97,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 417,
+      "front": "How does resonance affect molecular stability?",
+      "back": "Resonance delocalizes electrons over multiple structures, and greater delocalization lowers energy and increases stability (as in carboxylate ions and benzene).",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 98,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 421,
+      "front": "What is the difference between constitutional isomers and stereoisomers?",
+      "back": "Constitutional (structural) isomers differ in atom connectivity, whereas stereoisomers have the same connectivity but differ in spatial arrangement.",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 99,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 425,
+      "front": "What products form when primary versus secondary alcohols are oxidized?",
+      "back": "Primary alcohols oxidize to aldehydes and then carboxylic acids, while secondary alcohols oxidize to ketones; tertiary alcohols resist oxidation.",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 100,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 429,
+      "front": "Which IR absorptions are diagnostic for O-H and C=O groups?",
+      "back": "A broad O-H stretch appears around 3200 to 3550 per cm, and a strong C=O carbonyl stretch appears near 1700 per cm.",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 101,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 433,
+      "front": "Give the kinematic equation relating displacement, initial velocity, acceleration, and time.",
+      "back": "x = v0*t + (1/2)a*t^2 for constant acceleration; another useful form is v^2 = v0^2 + 2a*x.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 102,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 437,
+      "front": "How is work defined for a constant force?",
+      "back": "Work = F*d*cos(theta), where theta is the angle between the force and displacement; force perpendicular to motion does zero work.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 103,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 441,
+      "front": "What is the work-energy theorem?",
+      "back": "The net work done on an object equals its change in kinetic energy, W_net = delta KE, where KE = (1/2)m*v^2.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 104,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 445,
+      "front": "What does conservation of mechanical energy state?",
+      "back": "In the absence of non-conservative forces like friction, the sum of kinetic and potential energy stays constant, so KE + PE is conserved.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 105,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 449,
+      "front": "How are impulse and momentum related?",
+      "back": "Impulse equals the change in momentum, F*t = delta(m*v); momentum p = m*v is conserved in a system with no external net force.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 106,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 453,
+      "front": "State Coulomb's law for the force between two point charges.",
+      "back": "F = k*q1*q2 / r^2; the force is attractive for opposite charges and repulsive for like charges, and it falls off with the square of the distance.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 107,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 457,
+      "front": "How is electric field related to force on a charge?",
+      "back": "E = F/q, so the force on a charge is F = qE; the field points away from positive charges and toward negative charges.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 108,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 461,
+      "front": "State Ohm's law and the formula for electrical power.",
+      "back": "V = I*R relates voltage, current, and resistance; power dissipated is P = I*V = I^2*R = V^2/R.",
+      "jw_book": "physics",
+      "status": "pending",
+      "duplicate_cluster": "Ohm's law"
+    },
+    {
+      "id": 109,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 465,
+      "front": "How do resistors combine in series versus parallel?",
+      "back": "In series resistances add (R_total = R1 + R2 + ...); in parallel the reciprocals add (1/R_total = 1/R1 + 1/R2 + ...), giving a smaller total.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 110,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 469,
+      "front": "How is the capacitance of a capacitor defined?",
+      "back": "C = Q/V, the charge stored per unit voltage; energy stored is U = (1/2)C*V^2.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 111,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 473,
+      "front": "What is the relationship among wave speed, frequency, and wavelength?",
+      "back": "v = f * lambda; for a given medium the speed is fixed, so higher frequency means shorter wavelength.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 112,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 477,
+      "front": "What is the Doppler effect for sound?",
+      "back": "Observed frequency rises as source and observer approach and falls as they recede, because relative motion compresses or stretches the wavelengths.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 113,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 481,
+      "front": "How does sound intensity level in decibels relate to intensity?",
+      "back": "Level (dB) = 10*log(I/I0), so every 10 dB increase is a tenfold increase in intensity; I0 is the reference 1 x 10^-12 W/m^2.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 114,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 485,
+      "front": "State the thin lens and mirror equation and the sign of focal length.",
+      "back": "1/f = 1/do + 1/di; converging lenses and concave mirrors have positive focal length, while diverging lenses and convex mirrors have negative focal length.",
+      "jw_book": "organic-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 115,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 489,
+      "front": "State Snell's law of refraction.",
+      "back": "n1*sin(theta1) = n2*sin(theta2); light bends toward the normal when entering a higher-index (slower) medium.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 116,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 493,
+      "front": "What is total internal reflection and when does it occur?",
+      "back": "It occurs when light travels from a higher- to lower-index medium at an angle beyond the critical angle, causing all light to reflect back into the denser medium.",
+      "jw_book": "general-chemistry",
+      "status": "pending"
+    },
+    {
+      "id": 117,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 497,
+      "front": "How is pressure in a static fluid related to depth?",
+      "back": "P = P0 + rho*g*h; pressure increases linearly with depth and depends on fluid density but not container shape.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 118,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 501,
+      "front": "State Archimedes' principle of buoyancy.",
+      "back": "The buoyant force on a submerged or floating object equals the weight of the fluid it displaces, F_b = rho_fluid * V_displaced * g.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 119,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 505,
+      "front": "What does the continuity equation state for an incompressible fluid?",
+      "back": "A1*v1 = A2*v2, so fluid speeds up when the cross-sectional area of the pipe narrows and slows when it widens.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 120,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 509,
+      "front": "What does Bernoulli's principle relate in a flowing fluid?",
+      "back": "Along a streamline, P + (1/2)rho*v^2 + rho*g*h is constant, so regions of faster flow have lower pressure.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 121,
+      "deck": "MCAT::Chemistry & Physics",
+      "line": 513,
+      "front": "What determines the period of a simple pendulum and a mass on a spring?",
+      "back": "A pendulum's period is T = 2*pi*sqrt(L/g) (independent of mass), and a spring's is T = 2*pi*sqrt(m/k); both describe simple harmonic motion.",
+      "jw_book": "physics",
+      "status": "pending"
+    },
+    {
+      "id": 122,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 522,
+      "front": "What is classical conditioning?",
+      "back": "Learning in which a neutral stimulus becomes associated with a meaningful stimulus to elicit a conditioned response (e.g., Pavlov's dogs).",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 123,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 526,
+      "front": "Name Maslow's hierarchy of needs from bottom to top.",
+      "back": "Physiological, safety, love/belonging, esteem, and self-actualization.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 124,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 530,
+      "front": "What is the difference between an independent and dependent variable?",
+      "back": "The independent variable is manipulated by the researcher; the dependent variable is measured as the outcome.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 125,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 534,
+      "front": "Define the fundamental attribution error.",
+      "back": "The tendency to attribute others' behavior to internal dispositions while underestimating situational factors.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 126,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 538,
+      "front": "What is operant conditioning?",
+      "back": "Learning in which behavior is shaped by its consequences (reinforcement increases behavior; punishment decreases it).",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 127,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 542,
+      "front": "Distinguish between assimilation and accommodation (Piaget).",
+      "back": "Assimilation incorporates new information into existing schemas; accommodation modifies schemas to fit new information.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 128,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 546,
+      "front": "What is socialization?",
+      "back": "The lifelong process by which individuals learn and internalize the norms, values, and behaviors of their society.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 129,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 550,
+      "front": "Define social facilitation.",
+      "back": "The tendency for the presence of others to improve performance on simple/well-learned tasks and impair it on complex/novel tasks.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 130,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 554,
+      "front": "What are the stages of sleep characterized by EEG patterns?",
+      "back": "Stage 1 (theta), Stage 2 (sleep spindles, K-complexes), Stages 3-4 (delta/slow-wave), and REM sleep.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 131,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 558,
+      "front": "What is the difference between a primary and secondary group?",
+      "back": "Primary groups are small, intimate, and long-lasting (e.g., family); secondary groups are larger, impersonal, and goal-oriented (e.g., coworkers).",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 132,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 562,
+      "front": "What is the difference between sensation and perception?",
+      "back": "Sensation is the peripheral process of detecting stimuli and converting physical energy into neural signals (transduction). Perception is the central process of organizing and interpreting that sensory information to give it meaning.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 133,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 566,
+      "front": "What is an absolute threshold?",
+      "back": "The minimum stimulus intensity needed to detect a stimulus 50 percent of the time, such as the faintest sound you can hear or the dimmest light you can detect.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 134,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 570,
+      "front": "What is the difference threshold (JND) and what law governs it?",
+      "back": "The just-noticeable difference is the minimum change in stimulus intensity detectable 50 percent of the time. Weber's Law states the JND is a constant proportion of the original stimulus intensity.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 135,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 574,
+      "front": "How does top-down processing differ from bottom-up processing?",
+      "back": "Top-down processing is knowledge-driven, using prior expectations and context to interpret sensations. Bottom-up processing is data-driven, building perception from the raw features of the stimulus.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 136,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 578,
+      "front": "What is the difference between positive and negative reinforcement?",
+      "back": "Both increase behavior. Positive reinforcement adds a desirable stimulus after a behavior; negative reinforcement removes an aversive stimulus. Positive means adding, negative means removing.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 137,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 582,
+      "front": "What is the difference between positive and negative punishment?",
+      "back": "Both decrease behavior. Positive punishment adds an aversive stimulus; negative punishment removes a desirable stimulus. The terms refer to addition versus subtraction, not good versus bad.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 138,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 586,
+      "front": "How do stimulus generalization and discrimination differ in conditioning?",
+      "back": "Generalization is responding to stimuli similar to the conditioned stimulus, widening the range of effective stimuli. Discrimination is responding only to the specific conditioned stimulus, narrowing the response.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 139,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 590,
+      "front": "What is observational learning and who is it associated with?",
+      "back": "Learning by watching and imitating others rather than through direct reinforcement. It is central to Bandura's social learning theory, demonstrated by the Bobo doll experiment.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 140,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 594,
+      "front": "What is the difference between explicit and implicit memory?",
+      "back": "Explicit (declarative) memory is conscious memory for facts and events that can be verbally reported. Implicit (non-declarative) memory is unconscious, automatic memory for skills and procedures.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 141,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 598,
+      "front": "How do semantic and episodic memory differ?",
+      "back": "Both are explicit. Semantic memory stores general facts without personal context, while episodic memory stores personally experienced events tied to a specific time, place, and emotion.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 142,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 602,
+      "front": "How does short-term (working) memory differ from long-term memory?",
+      "back": "Short-term memory holds about 7 plus or minus 2 items for 15 to 30 seconds and is active and temporary. Long-term memory has theoretically unlimited capacity and durable storage.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 143,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 606,
+      "front": "What is the difference between proactive and retroactive interference?",
+      "back": "Proactive interference is when old memories disrupt new learning (old pushes forward). Retroactive interference is when new memories disrupt old ones (new reaches backward).",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 144,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 610,
+      "front": "What is the difference between encoding and retrieval?",
+      "back": "Encoding converts information into a storable form (input), while retrieval accesses stored information and brings it into awareness (output). The tip-of-the-tongue phenomenon is a retrieval failure, not an encoding failure.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 145,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 614,
+      "front": "What distinguishes Piaget's concrete operational stage from the formal operational stage?",
+      "back": "In the concrete operational stage (about 7 to 11 years) children reason logically about tangible objects and grasp conservation. In the formal operational stage (12 plus years) they reason abstractly and hypothetically.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 146,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 618,
+      "front": "What does the Yerkes-Dodson (arousal) law state about motivation?",
+      "back": "Performance improves with arousal up to an optimal point, after which further arousal impairs performance, producing an inverted U-shaped relationship between arousal and performance.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 147,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 622,
+      "front": "What is the difference between intrinsic and extrinsic motivation?",
+      "back": "Intrinsic motivation arises from internal satisfaction or interest in the activity itself, while extrinsic motivation comes from external rewards or the avoidance of punishment.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 148,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 626,
+      "front": "How does the Schachter-Singer two-factor theory of emotion work?",
+      "back": "Emotion results from both physiological arousal and a cognitive label (interpretation) of that arousal. The same arousal can produce different emotions depending on how it is appraised.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 149,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 630,
+      "front": "How do the James-Lange and Cannon-Bard theories of emotion differ?",
+      "back": "James-Lange says emotion follows from physiological arousal (we feel afraid because we tremble). Cannon-Bard says physiological arousal and the emotional experience occur simultaneously and independently.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 150,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 634,
+      "front": "What are the three stages of the general adaptation syndrome?",
+      "back": "Selye's model of the stress response has three stages: alarm (initial fight-or-flight activation), resistance (sustained coping), and exhaustion (depleted resources and vulnerability to illness).",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 151,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 638,
+      "front": "What is the difference between problem-focused and emotion-focused coping?",
+      "back": "Problem-focused coping targets the stressor itself by taking action to change or remove it. Emotion-focused coping manages the emotional distress caused by the stressor rather than the stressor itself.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 152,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 642,
+      "front": "What is the looking-glass self?",
+      "back": "Cooley's concept that we develop our self-concept based on how we imagine others perceive and judge us. Our sense of self is shaped by the reflected appraisals of others.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 153,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 646,
+      "front": "What is impression management (dramaturgy)?",
+      "back": "Goffman's idea that people consciously control the impressions others form of them, performing a front-stage self for audiences while a more authentic self exists back stage.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 154,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 650,
+      "front": "What is the difference between major depressive disorder and bipolar disorder?",
+      "back": "Both involve depressive episodes, but bipolar disorder additionally includes manic or hypomanic episodes. The presence of mania or hypomania distinguishes bipolar from unipolar MDD.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 155,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 654,
+      "front": "What is the diathesis-stress model of psychological disorders?",
+      "back": "The model proposes that disorders arise from the interaction of a predisposing vulnerability (diathesis) and environmental stressors, rather than from either factor alone.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 156,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 658,
+      "front": "What is the difference between conformity and compliance?",
+      "back": "Conformity is changing behavior to match a group without any direct request, driven by group norms. Compliance is changing behavior in response to a direct request from a peer with no authority over you.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 157,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 662,
+      "front": "What is the difference between compliance and obedience?",
+      "back": "Both involve explicit requests, but obedience is a response to a direct order from a legitimate authority figure, whereas compliance is a response to a request from an equal with no power differential.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 158,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 666,
+      "front": "What is the difference between normative and informational social influence?",
+      "back": "Normative influence is conforming to gain acceptance or avoid rejection, without genuine belief change. Informational influence is conforming because you believe the group has superior knowledge, producing real belief change.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 159,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 670,
+      "front": "What is actor-observer bias?",
+      "back": "The tendency to attribute our own behavior to situational factors while attributing others' behavior to dispositional factors, applying different standards to ourselves versus others.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 160,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 674,
+      "front": "What is self-serving bias?",
+      "back": "The tendency to attribute one's own successes to internal dispositional factors and one's failures to external situational factors, which protects self-esteem.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 161,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 678,
+      "front": "What is the just-world hypothesis?",
+      "back": "The belief that the world is fair and people get what they deserve, which can lead to blaming victims for their misfortunes because outcomes are assumed to reflect character.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 162,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 682,
+      "front": "What is cognitive dissonance?",
+      "back": "The mental discomfort of holding contradictory beliefs or acting in conflict with one's beliefs. The discomfort motivates a change in attitude or behavior to restore consistency.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 163,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 686,
+      "front": "What is the difference between prejudice and discrimination?",
+      "back": "Prejudice is an internal negative attitude toward a group, while discrimination is the external, observable behavior of treating people unfavorably based on group membership.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 164,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 690,
+      "front": "What is the difference between social facilitation and social loafing?",
+      "back": "Social facilitation is improved performance on simple or well-learned tasks when others are present. Social loafing is reduced individual effort in a group when personal contribution is not identifiable.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 165,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 694,
+      "front": "What is the bystander effect and what mechanism explains it?",
+      "back": "The bystander effect is the reduced likelihood that any individual will help a victim when others are present. It is driven by diffusion of responsibility, where accountability is spread across the group.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 166,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 698,
+      "front": "What is the difference between an in-group and an out-group?",
+      "back": "An in-group is a social group one identifies with (us), associated with favoritism. An out-group is one an individual does not belong to (them), associated with the out-group homogeneity effect and stereotyping.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 167,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 702,
+      "front": "What is stereotype threat?",
+      "back": "The phenomenon in which awareness of a negative stereotype about one's group creates anxiety that impairs performance, causing individuals to inadvertently confirm the stereotype.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 168,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 706,
+      "front": "What is a self-fulfilling prophecy?",
+      "back": "When an expectation about a person or situation influences behavior in ways that cause the expectation to come true, such as a teacher's low expectations leading a student to underperform.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 169,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 710,
+      "front": "What is the difference between achieved and ascribed status?",
+      "back": "Achieved status is a social position earned through effort or choice, such as occupation. Ascribed status is assigned at birth or involuntarily, such as race or sex, over which one has no control.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 170,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 714,
+      "front": "What is the difference between role conflict and role strain?",
+      "back": "Role conflict is tension between the demands of two or more different roles a person holds. Role strain is tension from incompatible demands within a single role.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 171,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 718,
+      "front": "What is the core claim of conflict theory (Marx and Weber)?",
+      "back": "Conflict theory holds that society is structured around competition for limited resources, producing inequality between groups. Marx emphasized economic class, while Weber added prestige and power.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 172,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 722,
+      "front": "What is symbolic interactionism?",
+      "back": "A micro-level sociological perspective that examines how people create and interpret shared meanings through symbols and everyday social interaction, shaping their sense of reality.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 173,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 726,
+      "front": "What does the demographic transition model describe?",
+      "back": "A model describing how populations shift from high birth and death rates to low birth and death rates as a society industrializes and develops, changing population growth over stages.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 174,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 730,
+      "front": "What is social stratification and how does it relate to socioeconomic status?",
+      "back": "Social stratification is the hierarchical ranking of people into layers based on unequal access to resources. Socioeconomic status reflects an individual's position based on income, education, and occupation.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 175,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 734,
+      "front": "What is the difference between cultural capital and social capital?",
+      "back": "Cultural capital is the non-financial assets such as education, skills, and cultural knowledge that promote mobility. Social capital is the advantages gained through social networks and relationships.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 176,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 738,
+      "front": "What is the difference between the sympathetic and parasympathetic nervous systems?",
+      "back": "The sympathetic system drives fight-or-flight (raising heart rate, using norepinephrine at effectors). The parasympathetic system drives rest-and-digest (lowering heart rate, using acetylcholine).",
+      "jw_book": "behavioral-sciences",
+      "status": "pending",
+      "duplicate_cluster": "sympathetic vs parasympathetic"
+    },
+    {
+      "id": 177,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 742,
+      "front": "What is the difference between a receptor agonist and an antagonist?",
+      "back": "An agonist binds a receptor and activates it, mimicking the natural ligand. An antagonist binds a receptor and blocks it without activating it, preventing the natural ligand from acting.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 178,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 746,
+      "front": "What is the difference between internal and external validity?",
+      "back": "Internal validity is the degree to which changes in the dependent variable can be causally attributed to the independent variable. External validity is the degree to which findings generalize beyond the study.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 179,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 750,
+      "front": "What is the difference between reliability and validity?",
+      "back": "Reliability is the consistency of a measurement, while validity is its accuracy. A measure can be reliable without being valid, but it cannot be valid without being reliable.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 180,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 754,
+      "front": "What is the difference between longitudinal and cross-sectional studies?",
+      "back": "Longitudinal studies follow the same individuals over time, while cross-sectional studies compare different groups at a single point in time. Cross-sectional designs are vulnerable to cohort effects.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 181,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 758,
+      "front": "What is the difference between the placebo and nocebo effects?",
+      "back": "The placebo effect is a real improvement caused by the expectation of receiving treatment, while the nocebo effect is a worsening of symptoms caused by negative expectations about an inert treatment.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 182,
+      "deck": "MCAT::Psychology & Sociology",
+      "line": 762,
+      "front": "What is the difference between the biomedical and biopsychosocial models of health?",
+      "back": "The biomedical model explains illness purely through biological factors, while the biopsychosocial model integrates biological, psychological, and social factors to understand health and disease.",
+      "jw_book": "behavioral-sciences",
+      "status": "pending"
+    },
+    {
+      "id": 183,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 771,
+      "front": "What does the CARS section test?",
+      "back": "Reading comprehension, analysis, and reasoning skills using passages from the humanities and social sciences; no outside content knowledge is required.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 184,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 775,
+      "front": "What is the difference between an inference and a stated detail?",
+      "back": "A stated detail is explicitly written in the passage; an inference is a logical conclusion drawn from what is stated but not directly written.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 185,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 779,
+      "front": "What is the main idea (thesis) of a passage?",
+      "back": "The central point or argument the author is trying to convey, around which the supporting details are organized.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 186,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 783,
+      "front": "What is the author's tone?",
+      "back": "The author's attitude toward the subject, conveyed through word choice (e.g., critical, neutral, enthusiastic, skeptical).",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 187,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 787,
+      "front": "What strategy helps with 'strengthen' or 'weaken' questions?",
+      "back": "Identify the author's core argument, then evaluate which answer choice provides evidence that supports or undermines that specific claim.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 188,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 791,
+      "front": "How should you approach answer choices with extreme wording (e.g., 'always', 'never')?",
+      "back": "Treat them with caution; absolute statements are often too strong to be supported by a nuanced passage.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 189,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 795,
+      "front": "What is the purpose of an 'except' or 'least' question?",
+      "back": "It asks you to identify the one answer choice that does NOT fit; the other three will be true or supported by the passage.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 190,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 799,
+      "front": "Why is it important to read for structure, not just content, in CARS?",
+      "back": "Understanding how an argument is built (claims, evidence, counterarguments) helps answer reasoning questions about the author's purpose and logic.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 191,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 803,
+      "front": "What does the CARS section fundamentally test?",
+      "back": "It is an argument-analysis test, not a reading-comprehension or recall test. It measures your ability to comprehend, reason, and apply using only what the passage provides.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 192,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 807,
+      "front": "What is the CARS section format (passages, questions, time)?",
+      "back": "Nine passages, 53 questions, and a 90-minute time limit, with no breaks within the section.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 193,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 811,
+      "front": "What is the target time budget per CARS passage?",
+      "back": "About 10 minutes total: roughly 3 to 4 minutes reading and building your map, and 6 to 7 minutes answering the questions.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 194,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 815,
+      "front": "What are the three CARS question categories and their approximate weights?",
+      "back": "Foundations of Comprehension (~30%), Reasoning Within the Text (~30%), and Reasoning Beyond the Text (~40%).",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 195,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 819,
+      "front": "Which CARS question category carries the most weight, and why does it matter?",
+      "back": "Reasoning Beyond the Text at about 40 percent. It is the highest-weight category and the one students most consistently miss, so strategy gains here matter most.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 196,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 823,
+      "front": "What subject areas do CARS passages cover?",
+      "back": "About 50 percent humanities (philosophy, literature, art, ethics, history, religion) and 50 percent social sciences (psychology, sociology, economics, political science, anthropology).",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 197,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 827,
+      "front": "What question types fall under Foundations of Comprehension?",
+      "back": "Main idea and primary purpose, specific detail or direct retrieval, vocabulary in context, and tone or author attitude.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 198,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 831,
+      "front": "What question types fall under Reasoning Within the Text?",
+      "back": "Strengthen or weaken, function of a paragraph, logical structure, and identifying an assumption.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 199,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 835,
+      "front": "What question types fall under Reasoning Beyond the Text?",
+      "back": "Application or analogy, author response to new scenarios, new-information strengthen or weaken, and prediction.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 200,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 839,
+      "front": "What are the four elements of a CARS passage map?",
+      "back": "The central thesis in one sentence, the author's tone and stance, each paragraph's purpose, and location flags for key details.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 201,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 843,
+      "front": "What is the central thesis in passage mapping?",
+      "back": "A one-sentence statement of the author's main argument that serves as your anchor for filtering every question. It captures the specific claim, not just the topic.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 202,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 847,
+      "front": "Why is identifying tone so important in CARS?",
+      "back": "Misreading tone is a common source of wrong answers on main idea and author-attitude questions. Tone reflects the author's relationship to the argument, not just positive or negative.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 203,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 851,
+      "front": "What are the main tone or stance categories to watch for?",
+      "back": "Defending a position, critiquing a position, presenting multiple views, uncertain or exploratory, and sarcastic or ironic.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 204,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 855,
+      "front": "What are location flags in a passage map?",
+      "back": "Paragraph-level mental tags for named studies, statistics, dates, or defined terms that might appear in questions, so you can go straight there instead of re-reading.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 205,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 859,
+      "front": "How does the AAMC define a valid CARS inference?",
+      "back": "A conclusion that is necessarily true given the passage and would not be true without it. Valid inferences are modest, tightly bounded, and traceable to specific passage language.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 206,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 863,
+      "front": "What is the deletion test for inference questions?",
+      "back": "Ask whether the answer would still seem plausible if you deleted the passage. If yes, it relies on outside knowledge and should be eliminated.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 207,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 867,
+      "front": "Why is applying outside knowledge almost always wrong in CARS?",
+      "back": "An answer can be factually true in the real world yet unsupported by the passage. If support cannot be found directly in the text, the answer is almost certainly wrong.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 208,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 871,
+      "front": "What is the 'too broad' wrong-answer trap?",
+      "back": "An answer that accurately describes the topic but overstates the scope, such as generalizing a claim about one composer to all Enlightenment composers.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 209,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 875,
+      "front": "What is the 'too narrow' wrong-answer trap?",
+      "back": "An answer that accurately describes one paragraph but misses the overall argument. It often uses language taken directly from the passage, which makes it feel correct.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 210,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 879,
+      "front": "What is the 'outside the text' wrong-answer trap?",
+      "back": "An answer that is factually true in the real world but not supported by or derivable from the passage. It most often catches students with strong background knowledge.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 211,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 883,
+      "front": "What is the 'opposite' or 'contradicts author' trap?",
+      "back": "An answer that describes the position the author is arguing against. It is common in passages where the author presents a counterargument before rebutting it.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 212,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 887,
+      "front": "How does extreme or absolute language signal a wrong answer?",
+      "back": "Words like always, never, all, none, only, or completely usually overstate a claim the passage supports only in a more qualified form.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 213,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 891,
+      "front": "What is the 'misrepresents tone' trap?",
+      "back": "An answer that gets the topic right but describes the author's attitude incorrectly, such as calling a cautiously optimistic author an enthusiastic advocate.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 214,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 895,
+      "front": "What is the 'half-right, half-wrong' trap?",
+      "back": "An answer whose first clause accurately describes the passage but whose second clause contradicts it or adds unsupported information. Read every word, including the ending.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 215,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 899,
+      "front": "What is the 'distractor detail' trap?",
+      "back": "An answer that uses real words or names from the passage but applies them incorrectly. The detail is genuine, but its use is wrong.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 216,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 903,
+      "front": "What one-word habit makes elimination systematic?",
+      "back": "Justify each eliminated choice with a single word such as 'too narrow', 'extreme', or 'outside'. This keeps reasoning explicit and prevents second-guessing.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 217,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 907,
+      "front": "What is the 90-second rule in CARS?",
+      "back": "Never spend more than 90 seconds on a single question. If you have not eliminated down to one answer, mark your best choice, flag it, and move on.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 218,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 911,
+      "front": "How should you modulate reading speed within a passage?",
+      "back": "Slow down at thesis statements, the first sentence of paragraphs, and explicit opinion language; speed up through supporting examples.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 219,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 915,
+      "front": "How should you decide passage order in the CARS section?",
+      "back": "Spend about 30 seconds scanning first lines and start with passages you find easiest to engage. You may do passages in any order and flag to return.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 220,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 919,
+      "front": "In what four predictable ways does the AAMC build wrong main idea answers?",
+      "back": "Too narrow (describes one paragraph), too broad (overstates scope), contradicts the tone, or distorts the claim. A precise one-sentence thesis eliminates all four.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 221,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 923,
+      "front": "What is the difference between top-down and bottom-up passages?",
+      "back": "Top-down passages state the main claim in the first paragraph or two, then support it; bottom-up passages build evidence first and synthesize the thesis near the end.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 222,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 927,
+      "front": "Where do most main idea mistakes happen, and how do you avoid them?",
+      "back": "In bottom-up passages, where students anchor to the opening problem setup and never revise. After finishing, ask whether the author's position became clearer and update your thesis.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 223,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 931,
+      "front": "Which transition words signal a contrast or counterargument?",
+      "back": "However, yet, but, in contrast, on the other hand, despite, nevertheless, although, and while.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 224,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 935,
+      "front": "Which transition words signal added evidence or support?",
+      "back": "Moreover, furthermore, additionally, in fact, indeed, as evidence, for instance, and specifically.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 225,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 939,
+      "front": "Which phrases signal a concede-then-rebut structure?",
+      "back": "Admittedly, granted, it is true that... but, and even though... still. They mark the author acknowledging a point before pushing back.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 226,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 943,
+      "front": "Which transition words indicate causation or a conclusion drawn?",
+      "back": "Therefore, thus, consequently, as a result, this suggests, and it follows that.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 227,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 947,
+      "front": "In CARS, is the correct answer usually the clearly correct one?",
+      "back": "No. The correct answer is frequently the least wrong option, not the most satisfying or sophisticated one. The three wrong options are almost always definitively wrong.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 228,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 951,
+      "front": "What mindset should you use when evaluating answer choices?",
+      "back": "Build a case for elimination, not selection. Ask whether anything in the passage makes each choice definitively wrong; the option with no case against it is your answer.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 229,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 955,
+      "front": "What is the defining feature of the CARS blind review protocol?",
+      "back": "You do not look at your scores before completing a second pass. You re-read the passage and reconstruct your reasoning for every choice before checking solutions.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 230,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 959,
+      "front": "What two steps make CARS review 'deep' that most students skip?",
+      "back": "Re-reading the passage before reviewing any questions, and reconstructing your reasoning for every answer choice before looking at the solution.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 231,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 963,
+      "front": "Why does blind review work better than ordinary review?",
+      "back": "Redoing a passage without knowing your scores removes the defensive reasoning that leads students to justify why they were 'almost right' instead of analyzing their actual error.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 232,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 967,
+      "front": "What is the 'no-return' rule in CARS reading?",
+      "back": "CARS passages are meant to be read once, carefully. Going back to re-read is a warning sign that the first read did not produce genuine comprehension and it costs time.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 233,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 971,
+      "front": "Why is CARS described as a 'listening exam' rather than a knowledge exam?",
+      "back": "Its goal is to set aside your own opinions and fully understand exactly what the author is saying on their terms, acting as a blank slate rather than an evaluator.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 234,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 975,
+      "front": "What clinical skill does CARS mirror?",
+      "back": "A patient interaction: the author is the patient and their argument is the history, so your job is to hear them accurately without projection, assumptions, or personal commentary.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 235,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 979,
+      "front": "Why must a CARS strategy be applied consistently on every passage?",
+      "back": "Variation is the enemy of skill consolidation. Changing your approach on hard passages means the strategy never gets tested under real conditions where it matters most.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 236,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 983,
+      "front": "How should you handle a CARS passage on an unfamiliar topic?",
+      "back": "You do not need topic knowledge; all needed information is in the passage. Apply your mapping method mechanically, since argument structure does not depend on subject matter.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 237,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 987,
+      "front": "What question keywords do students most often misread, causing errors even with a good map?",
+      "back": "Negation and qualifier words such as NOT, EXCEPT, most likely, and 'would the author disagree'. Missing them leads you to answer a different question than the one asked.",
+      "jw_book": "cars",
+      "status": "pending"
+    },
+    {
+      "id": 238,
+      "deck": "MCAT::Critical Analysis & Reasoning (CARS)",
+      "line": 991,
+      "front": "What is a paragraph purpose note and how long should it be?",
+      "back": "A one-to-three-word tag of a paragraph's structural role, such as 'introduces thesis' or 'counterargument'. It should take only a few seconds per paragraph.",
+      "jw_book": "cars",
+      "status": "pending"
+    }
+  ]
+}
