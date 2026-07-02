@@ -272,17 +272,20 @@ class DeckBrowser:
                 html.escape(performance.justification)
             )
 
-        headline = (
+        performance_row = (
             "Performance: <b>{score:.0f}%</b> "
             "<span class=exam-metrics-envelope>({low:.0f}%\u2013{high:.0f}%, "
-            "{conf:.0f}% confidence)</span> &nbsp; "
-            "Projected MCAT: <b>{rscore:.0f}</b> "
-            "<span class=exam-metrics-envelope>({rlow:.0f}\u2013{rhigh:.0f})</span>"
+            "{conf:.0f}% confidence)</span>"
         ).format(
             score=performance.score,
             low=performance.range_min,
             high=performance.range_max,
             conf=performance.confidence,
+        )
+        readiness_row = (
+            "Projected MCAT: <b>{rscore:.0f}</b> "
+            "<span class=exam-metrics-envelope>({rlow:.0f}\u2013{rhigh:.0f})</span>"
+        ).format(
             rscore=readiness.score,
             rlow=readiness.range_min,
             rhigh=readiness.range_max,
@@ -302,12 +305,14 @@ class DeckBrowser:
         )
         return """
 <div id=examMetrics>
-  <div class=exam-metrics-headline>{headline}</div>
+  <div class=exam-metrics-headline>{performance_row}</div>
+  <div class=exam-metrics-headline>{readiness_row}</div>
   <div class=exam-metrics-sections>{sections}</div>
   <div class=exam-metrics-note>{note}</div>
 </div>
 """.format(
-            headline=headline,
+            performance_row=performance_row,
+            readiness_row=readiness_row,
             sections=sections,
             note=note,
         )
