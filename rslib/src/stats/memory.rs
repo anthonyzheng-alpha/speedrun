@@ -19,11 +19,12 @@
 
 use anki_proto::stats::CardMemoryEstimate;
 
+use super::envelope::confidence_from_range;
+use super::envelope::wilson_interval;
+
 /// Minimum number of rated reviews required before we're willing to state a
 /// number. Below this there isn't enough signal, so we say so instead.
 const MIN_MEMORY_SAMPLES: u32 = 3;
-/// z-score for the Wilson interval (roughly a 95% confidence level).
-const WILSON_Z: f32 = 1.96;
 
 /// Build a [`CardMemoryEstimate`] from the FSRS point estimate and the card's
 /// review history.
@@ -47,13 +48,11 @@ pub(crate) fn memory_estimate(
     }
 
     let p = retrievability.clamp(0.0, 1.0);
-    let (lo, hi) = wilson_interval(p, n_reviews);
+    let (lo, hi) = wilson_interval(p, n_reviews as f32);
     let range_min = lo * 100.0;
     let range_max = hi * 100.0;
     let score = p * 100.0;
-    // A tighter range means we're more confident. Width is in the 0-100 domain,
-    // so dividing by 100 maps it back to a 0-1 fraction of the whole scale.
-    let confidence = (100.0 * (1.0 - (range_max - range_min) / 100.0)).clamp(0.0, 100.0);
+    let confidence = confidence_from_range(range_min, range_max);
 
     let success_rate = (successes as f32 / n_reviews as f32 * 100.0).round() as i32;
     let justification = format!(
@@ -93,20 +92,6 @@ fn insufficient_data(n_reviews: u32, last_review_secs: i64) -> CardMemoryEstimat
         last_updated: last_review_secs,
         justification,
     }
-}
-
-/// Wilson score interval for a binomial proportion, using the FSRS point
-/// estimate `p` as the observed proportion and `n` as the sample size. Returns
-/// the `(lower, upper)` bounds clamped to `0.0..=1.0`. The interval always
-/// contains `p`, and narrows as `n` grows.
-fn wilson_interval(p: f32, n: u32) -> (f32, f32) {
-    let n = n as f32;
-    let z = WILSON_Z;
-    let z2 = z * z;
-    let denom = 1.0 + z2 / n;
-    let center = (p + z2 / (2.0 * n)) / denom;
-    let margin = (z / denom) * (p * (1.0 - p) / n + z2 / (4.0 * n * n)).sqrt();
-    ((center - margin).clamp(0.0, 1.0), (center + margin).clamp(0.0, 1.0))
 }
 
 #[cfg(test)]

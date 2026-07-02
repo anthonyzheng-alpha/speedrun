@@ -40,6 +40,17 @@ impl crate::services::StatsService for Collection {
     fn exam_coverage(&mut self) -> error::Result<anki_proto::stats::ExamCoverageResponse> {
         self.exam_coverage()
     }
+
+    fn exam_metrics(&mut self) -> error::Result<anki_proto::stats::ExamMetricsResponse> {
+        self.exam_metrics()
+    }
+
+    fn record_practice_exam(
+        &mut self,
+        input: anki_proto::stats::RecordPracticeExamRequest,
+    ) -> error::Result<()> {
+        self.record_practice_exam(input)
+    }
 }
 
 impl From<RevlogReviewKind> for i32 {

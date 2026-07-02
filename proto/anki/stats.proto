@@ -18,6 +18,11 @@ service StatsService {
   rpc SetGraphPreferences(GraphPreferences) returns (generic.Empty);
   // How much of the MCAT exam has been studied, overall and per section.
   rpc ExamCoverage(generic.Empty) returns (ExamCoverageResponse);
+  // Global performance + readiness metrics, overall and per section.
+  rpc ExamMetrics(generic.Empty) returns (ExamMetricsResponse);
+  // Persist the result of a completed practice exam so it can feed the
+  // performance/readiness metrics.
+  rpc RecordPracticeExam(RecordPracticeExamRequest) returns (generic.Empty);
 }
 
 // Implicitly includes any of the above methods that are not listed in the
@@ -115,6 +120,59 @@ message ExamCoverageResponse {
   float overall_percent = 2;
   uint32 topics_total = 3;
   uint32 topics_covered = 4;
+}
+
+// A single metric estimate with an honesty envelope, shared by the
+// performance and readiness metrics (and shaped like CardMemoryEstimate).
+message MetricEstimate {
+  // False when there isn't enough data (flashcard reviews + practice-exam
+  // questions) to state a number confidently; then only `justification` is
+  // meaningful.
+  bool has_enough_data = 1;
+  // Point estimate. For performance this is a 0-100 percentage; for readiness
+  // it is a projected MCAT score.
+  float score = 2;
+  // Lower bound of the plausible range, same units as `score`.
+  float range_min = 3;
+  // Upper bound of the plausible range, same units as `score`.
+  float range_max = 4;
+  // How confident the estimate is, 0-100 (wider range -> lower confidence).
+  float confidence = 5;
+  // Unix timestamp (seconds) of the most recent input the estimate is based on.
+  int64 last_updated = 6;
+  // Short human-readable explanation of the estimate.
+  string justification = 7;
+}
+
+// A per-section metric estimate.
+message SectionMetric {
+  // Section label, e.g. "Biology & Biochemistry".
+  string section = 1;
+  MetricEstimate estimate = 2;
+}
+
+// Global performance and readiness metrics. Performance is the estimated
+// chance (0-100) of answering a new exam-style question correctly; readiness
+// is the projected MCAT score. Neither is card-specific; both are influenced
+// by flashcard review history and practice-exam results (exams weigh more).
+message ExamMetricsResponse {
+  MetricEstimate performance_overall = 1;
+  repeated SectionMetric performance_sections = 2;
+  MetricEstimate readiness_overall = 3;
+  repeated SectionMetric readiness_sections = 4;
+}
+
+// The outcome of a completed practice exam, broken down by topic.
+message RecordPracticeExamRequest {
+  message TopicResult {
+    // Practice-exam topic key, e.g. "biology_biochemistry".
+    string topic = 1;
+    uint32 correct = 2;
+    uint32 total = 3;
+  }
+  repeated TopicResult results = 1;
+  // Unix timestamp (seconds) the exam was completed; 0 means "now".
+  int64 timestamp = 2;
 }
 
 message GraphsRequest {

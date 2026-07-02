@@ -3,8 +3,11 @@
 
 mod card;
 mod coverage;
+mod envelope;
 mod graphs;
 mod memory;
+mod metrics;
+mod practice_exam;
 mod service;
 mod today;
 
