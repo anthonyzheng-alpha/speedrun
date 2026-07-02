@@ -747,6 +747,7 @@ exposed_backend_list = [
     "graphs",
     "get_graph_preferences",
     "set_graph_preferences",
+    "record_practice_exam",
     # TagsService
     "complete_tag",
     # ImageOcclusionService
