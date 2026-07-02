@@ -209,4 +209,12 @@ tr:hover:not(.top-level-drag-row) {
         font-size: 0.8em;
         opacity: 0.7;
     }
+
+    .exam-metrics-divider {
+        border: none;
+        border-top: 1px solid currentColor;
+        opacity: 0.25;
+        margin: 0.8em auto;
+        max-width: 20em;
+    }
 }

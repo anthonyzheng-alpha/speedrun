@@ -268,8 +268,11 @@ class DeckBrowser:
         readiness = metrics.readiness_overall
 
         if not performance.has_enough_data:
-            return '<div id=examMetrics><div class=exam-metrics-note>{}</div></div>'.format(
-                html.escape(performance.justification)
+            return (
+                '<div id=examMetrics><hr class=exam-metrics-divider>'
+                '<div class=exam-metrics-note>{}</div></div>'.format(
+                    html.escape(performance.justification)
+                )
             )
 
         performance_row = (
@@ -298,23 +301,32 @@ class DeckBrowser:
             for section in metrics.performance_sections
             if section.estimate.has_enough_data
         )
-        note = (
+        performance_note = (
             "Your estimated chance of answering a new exam-style question "
-            "correctly, and your projected MCAT score. Based on your flashcard "
-            "reviews and practice exams (practice exams count more)."
+            "correctly. Based on your flashcard reviews and practice exams "
+            "(practice exams count more)."
         )
+        readiness_note = "Your projected MCAT score, derived from your section performance."
         return """
 <div id=examMetrics>
-  <div class=exam-metrics-headline>{performance_row}</div>
-  <div class=exam-metrics-headline>{readiness_row}</div>
-  <div class=exam-metrics-sections>{sections}</div>
-  <div class=exam-metrics-note>{note}</div>
+  <hr class=exam-metrics-divider>
+  <div class=exam-metrics-group>
+    <div class=exam-metrics-headline>{performance_row}</div>
+    <div class=exam-metrics-sections>{sections}</div>
+    <div class=exam-metrics-note>{performance_note}</div>
+  </div>
+  <hr class=exam-metrics-divider>
+  <div class=exam-metrics-group>
+    <div class=exam-metrics-headline>{readiness_row}</div>
+    <div class=exam-metrics-note>{readiness_note}</div>
+  </div>
 </div>
 """.format(
             performance_row=performance_row,
-            readiness_row=readiness_row,
             sections=sections,
-            note=note,
+            performance_note=performance_note,
+            readiness_row=readiness_row,
+            readiness_note=readiness_note,
         )
 
     def _renderDeckTree(self, top: DeckTreeNode) -> str:
