@@ -1,0 +1,138 @@
+@import "$lib/sass/base";
+
+.practice-exam {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 3rem;
+    color: var(--fg);
+}
+
+.practice-exam h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.practice-exam .subtitle {
+    color: var(--fg-subtle);
+    margin-bottom: 1.5rem;
+}
+
+.pe-card {
+    background: var(--canvas-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius, 8px);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.pe-topic-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+}
+
+.pe-count-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.pe-count-row input[type="number"] {
+    width: 6rem;
+    padding: 0.35rem 0.5rem;
+    background: var(--canvas-inset);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
+.pe-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+.pe-passage {
+    background: var(--canvas-inset);
+    border-left: 3px solid var(--border-strong, var(--border));
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+.pe-question-stem {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.pe-choice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    width: 100%;
+    text-align: start;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.6rem;
+    background: var(--canvas-inset);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--fg);
+    cursor: pointer;
+}
+
+.pe-choice:hover {
+    border-color: var(--fg-subtle);
+}
+
+.pe-choice.selected {
+    border-color: var(--accent, #4f8cff);
+    background: color-mix(in srgb, var(--accent, #4f8cff) 12%, var(--canvas-inset));
+}
+
+.pe-choice .pe-choice-letter {
+    font-weight: 700;
+    min-width: 1.4rem;
+}
+
+.pe-progress {
+    color: var(--fg-subtle);
+    margin-bottom: 0.75rem;
+}
+
+.pe-score {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.pe-breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.pe-review-choice {
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
+    margin-bottom: 0.35rem;
+}
+
+.pe-review-choice.correct {
+    background: color-mix(in srgb, #29a745 20%, transparent);
+}
+
+.pe-review-choice.incorrect {
+    background: color-mix(in srgb, #dc3545 20%, transparent);
+}
+
+.pe-explanation {
+    color: var(--fg-subtle);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+}

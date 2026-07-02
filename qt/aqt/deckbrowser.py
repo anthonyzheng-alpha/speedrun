@@ -120,6 +120,8 @@ class DeckBrowser:
             self.mw.onImport()
         elif cmd == "create":
             self._on_create()
+        elif cmd == "practice_exam":
+            self._on_practice_exam()
         elif cmd == "drag":
             source, target = arg.split(",")
             self._handle_drag_and_drop(DeckId(int(source)), DeckId(int(target or 0)))
@@ -413,6 +415,7 @@ class DeckBrowser:
     ######################################################################
 
     drawLinks = [
+        ["", "practice_exam", "Do Practice Exam"],
         ["", "shared", tr.decks_get_shared()],
         ["", "create", tr.decks_create_deck()],
         ["Ctrl+Shift+I", "import", tr.decks_import_file()],
@@ -440,6 +443,11 @@ class DeckBrowser:
             parent=self.mw, default_text=self.mw.col.decks.current()["name"]
         ):
             op.run_in_background()
+
+    def _on_practice_exam(self) -> None:
+        from aqt.practiceexam import display_practice_exam
+
+        display_practice_exam(self.mw)
 
     ######################################################################
 
