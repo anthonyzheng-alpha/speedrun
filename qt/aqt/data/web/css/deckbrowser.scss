@@ -180,3 +180,33 @@ tr:hover:not(.top-level-drag-row) {
         opacity: 0.7;
     }
 }
+
+#examMetrics {
+    margin: 1em auto 0.5em auto;
+    max-width: 40em;
+
+    .exam-metrics-headline {
+        font-size: 1.15em;
+    }
+
+    .exam-metrics-envelope {
+        font-size: 0.8em;
+        opacity: 0.7;
+    }
+
+    .exam-metrics-sections {
+        margin-top: 0.4em;
+
+        .exam-metrics-section {
+            display: inline-block;
+            margin: 0 0.6em;
+            white-space: nowrap;
+        }
+    }
+
+    .exam-metrics-note {
+        margin-top: 0.6em;
+        font-size: 0.8em;
+        opacity: 0.7;
+    }
+}

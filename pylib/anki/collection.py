@@ -1029,6 +1029,20 @@ class Collection(DeprecatedNamesMixin):
         """How much of the MCAT exam has been studied, overall and per section."""
         return self._backend.exam_coverage()
 
+    def exam_metrics(self) -> stats_pb2.ExamMetricsResponse:
+        """Global performance and readiness metrics, overall and per section."""
+        return self._backend.exam_metrics()
+
+    def record_practice_exam(
+        self,
+        results: Sequence[stats_pb2.RecordPracticeExamRequest.TopicResult],
+        timestamp: int = 0,
+    ) -> None:
+        """Persist a completed practice exam so it feeds performance/readiness."""
+        self._backend.record_practice_exam(
+            stats_pb2.RecordPracticeExamRequest(results=results, timestamp=timestamp)
+        )
+
     def studied_today(self) -> str:
         return self._backend.studied_today()
 

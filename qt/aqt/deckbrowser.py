@@ -44,6 +44,7 @@ class RenderData:
     studied_today: str
     sched_upgrade_required: bool
     exam_coverage: stats_pb2.ExamCoverageResponse
+    exam_metrics: stats_pb2.ExamMetricsResponse
 
 
 @dataclass
@@ -169,6 +170,7 @@ class DeckBrowser:
                     studied_today=col.studied_today(),
                     sched_upgrade_required=not col.v3_scheduler(),
                     exam_coverage=col.exam_coverage(),
+                    exam_metrics=col.exam_metrics(),
                 )
 
             def success(output: RenderData) -> None:
@@ -210,9 +212,13 @@ class DeckBrowser:
         self.web.eval("window.scrollTo(0, %d, 'instant');" % offset)
 
     def _renderStats(self) -> str:
-        return self._render_exam_coverage() + (
-            '<div id="studiedToday"><span>{}</span></div>'.format(
-                self._render_data.studied_today
+        return (
+            self._render_exam_coverage()
+            + self._render_exam_metrics()
+            + (
+                '<div id="studiedToday"><span>{}</span></div>'.format(
+                    self._render_data.studied_today
+                )
             )
         )
 
@@ -246,6 +252,62 @@ class DeckBrowser:
 </div>
 """.format(
             overall=coverage.overall_percent,
+            sections=sections,
+            note=note,
+        )
+
+    def _render_exam_metrics(self) -> str:
+        """Show global performance (chance of answering a new exam-style
+        question correctly) and readiness (projected MCAT score), overall and
+        per section. Shown only for MCAT collections, like exam coverage."""
+        if not self._render_data.exam_coverage.topics_total:
+            return ""
+
+        metrics = self._render_data.exam_metrics
+        performance = metrics.performance_overall
+        readiness = metrics.readiness_overall
+
+        if not performance.has_enough_data:
+            return '<div id=examMetrics><div class=exam-metrics-note>{}</div></div>'.format(
+                html.escape(performance.justification)
+            )
+
+        headline = (
+            "Performance: <b>{score:.0f}%</b> "
+            "<span class=exam-metrics-envelope>({low:.0f}%\u2013{high:.0f}%, "
+            "{conf:.0f}% confidence)</span> &nbsp; "
+            "Projected MCAT: <b>{rscore:.0f}</b> "
+            "<span class=exam-metrics-envelope>({rlow:.0f}\u2013{rhigh:.0f})</span>"
+        ).format(
+            score=performance.score,
+            low=performance.range_min,
+            high=performance.range_max,
+            conf=performance.confidence,
+            rscore=readiness.score,
+            rlow=readiness.range_min,
+            rhigh=readiness.range_max,
+        )
+        sections = "".join(
+            "<span class=exam-metrics-section>{name}: <b>{score:.0f}%</b></span>".format(
+                name=html.escape(section.section),
+                score=section.estimate.score,
+            )
+            for section in metrics.performance_sections
+            if section.estimate.has_enough_data
+        )
+        note = (
+            "Your estimated chance of answering a new exam-style question "
+            "correctly, and your projected MCAT score. Based on your flashcard "
+            "reviews and practice exams (practice exams count more)."
+        )
+        return """
+<div id=examMetrics>
+  <div class=exam-metrics-headline>{headline}</div>
+  <div class=exam-metrics-sections>{sections}</div>
+  <div class=exam-metrics-note>{note}</div>
+</div>
+""".format(
+            headline=headline,
             sections=sections,
             note=note,
         )
