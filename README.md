@@ -26,7 +26,7 @@ When the "Use AI-generated problems" toggle is on, questions are generated **in 
 
 Grounding and verification:
 
-- Questions are grounded on the Jack Westin MCAT books for each section (passed to the prompt as context). Sections can span multiple books:
+- Questions are grounded on the [Jack Westin MCAT books](https://jackwestin.com/mcat-books) for each section (passed to the prompt as context). Sections can span multiple books:
     - Biology & Biochemistry -> biology, biochemistry
     - Chemistry & Physics -> general-chemistry, organic-chemistry, physics
     - Psychology & Sociology -> behavioral-sciences
