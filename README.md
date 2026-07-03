@@ -57,4 +57,14 @@ To run on an Android emulator, follow the **Run on an Android emulator** section
 
 ## Getting Started
 
-For more information on building and developing, please see [Development](./docs/development.md).
+For more information on building, developing, please see [Development](./docs/development.md).
+
+## Installer
+
+Run `tools/build-installer` to build the installer.
+
+Depending on your operating system, this produces a file under `out/installer/dist`:
+
+- An MSI installer on Windows.
+- A .dmg file on macOS.
+- A tarball on Linux.

@@ -197,16 +197,6 @@ in the collection2.log file will also be printed on stdout.
 
 If ANKI_PROFILE_CODE is set, Python profiling data will be written on exit.
 
-## Installer
-
-Run `tools/build-installer` to build the installer.
-
-Depending on your operating system, this produces a file under `out/installer/dist`:
-
-- An MSI installer on Windows.
-- A .dmg file on macOS.
-- A tarball on Linux.
-
 ### Issues During Building
 
 If you are experiencing issues building the installer, make sure that all dependencies
