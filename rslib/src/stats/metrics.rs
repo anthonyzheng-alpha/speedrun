@@ -41,8 +41,10 @@ use crate::search::SortMode;
 const W_CARD: f32 = 1.0;
 /// Weight of one practice-exam question (higher than a flashcard review).
 const W_EXAM: f32 = 3.0;
-/// Minimum effective sample size before we're willing to state a number.
-const MIN_EFFECTIVE_SAMPLES: f32 = 3.0;
+/// Minimum number of practice-exam questions answered in a section before we
+/// will state a number for it. Set high so a single short quiz can't unlock a
+/// prediction; a section needs a full practice exam's worth of evidence.
+const MIN_EXAM_QUESTIONS_PER_SECTION: u32 = 10;
 
 /// Lowest scaled score for a single MCAT section.
 const SECTION_SCORE_MIN: f32 = 118.0;
@@ -54,7 +56,8 @@ const TOTAL_SCORE_MIN: f32 = 472.0;
 const TOTAL_SCORE_SPAN: f32 = 56.0;
 
 const INSUFFICIENT_MSG: &str =
-    "Not enough data yet: study flashcards and take practice exams to get an estimate.";
+    "Not enough data yet: take a full practice exam (at least 10 questions) in every MCAT \
+     topic you're studying before a prediction is made.";
 
 /// Maps each MCAT section deck name to the practice-exam topic key used in
 /// `questions.json`.
@@ -72,12 +75,29 @@ struct SectionAccumulator {
     sum_retrievability: f32,
     /// Number of reviewed cards contributing to `sum_retrievability`.
     reviewed_cards: f32,
+    /// Number of taxonomy cards present in the collection for this section,
+    /// regardless of whether they've been reviewed. A section counts as
+    /// "covered" (and therefore must have exam evidence before the overall
+    /// estimate will state a number) when this is greater than zero.
+    present_cards: u32,
     /// Practice-exam questions answered correctly in this section.
     correct: u32,
     /// Practice-exam questions answered in this section.
     total: u32,
     /// Latest input timestamp (last review or practice exam), unix seconds.
     last_updated: i64,
+}
+
+impl SectionAccumulator {
+    /// Whether this section has any cards in the collection.
+    fn is_covered(&self) -> bool {
+        self.present_cards > 0
+    }
+
+    /// Whether this section has enough practice-exam evidence to state a number.
+    fn is_eligible(&self) -> bool {
+        self.total >= MIN_EXAM_QUESTIONS_PER_SECTION
+    }
 }
 
 impl Collection {
@@ -97,6 +117,10 @@ impl Collection {
         let mut total_reviews = 0u32;
         let mut total_questions = 0u32;
         let mut overall_last_updated = 0i64;
+        // The overall estimate requires practice-exam evidence in *every*
+        // covered topic; a single strong section is not enough.
+        let mut any_covered = false;
+        let mut all_covered_eligible = true;
 
         for (idx, section) in MCAT_TOPICS.iter().enumerate() {
             let (deck_name, _topics) = *section;
@@ -106,6 +130,12 @@ impl Collection {
             total_reviews += accumulator.reviewed_cards as u32;
             total_questions += accumulator.total;
             overall_last_updated = overall_last_updated.max(accumulator.last_updated);
+            if accumulator.is_covered() {
+                any_covered = true;
+                if !accumulator.is_eligible() {
+                    all_covered_eligible = false;
+                }
+            }
 
             let (performance, readiness, probability, effective) = section_estimates(accumulator);
             if let Some(p) = probability {
@@ -122,13 +152,19 @@ impl Collection {
             });
         }
 
-        let (performance_overall, readiness_overall) = overall_estimates(
-            &section_probabilities,
-            effective_samples_total,
-            total_reviews,
-            total_questions,
-            overall_last_updated,
-        );
+        let overall_ready = any_covered && all_covered_eligible && !section_probabilities.is_empty();
+        let (performance_overall, readiness_overall) = if overall_ready {
+            overall_estimates(
+                &section_probabilities,
+                effective_samples_total,
+                total_reviews,
+                total_questions,
+                overall_last_updated,
+            )
+        } else {
+            let est = insufficient(overall_last_updated);
+            (est.clone(), est)
+        };
 
         Ok(ExamMetricsResponse {
             performance_overall: Some(performance_overall),
@@ -160,7 +196,11 @@ impl Collection {
             let Some(&idx) = front_to_section.get(front.as_str()) else {
                 continue;
             };
-            // Only cards with an FSRS memory state (i.e. reviewed) contribute.
+            // The card belongs to this section's taxonomy, so the section is
+            // "covered" whether or not it has been reviewed yet.
+            acc[idx].present_cards += 1;
+            // Only cards with an FSRS memory state (i.e. reviewed) contribute to
+            // the retrievability signal.
             let Some(state) = card.memory_state else {
                 continue;
             };
@@ -205,17 +245,19 @@ impl Collection {
 /// blended probability and effective sample size (both `None`/`0` when there
 /// isn't enough data).
 fn section_estimates(acc: &SectionAccumulator) -> (MetricEstimate, MetricEstimate, Option<f32>, f32) {
-    let effective = W_CARD * acc.reviewed_cards + W_EXAM * acc.total as f32;
-    if effective < MIN_EFFECTIVE_SAMPLES {
+    // A section only states a number once it has a full practice exam's worth
+    // of questions; flashcards refine the estimate but can't unlock it.
+    if !acc.is_eligible() {
         let est = insufficient(acc.last_updated);
-        return (est.clone(), est, None, effective);
+        return (est.clone(), est, None, 0.0);
     }
+    let effective = W_CARD * acc.reviewed_cards + W_EXAM * acc.total as f32;
     let weighted_success = W_CARD * acc.sum_retrievability + W_EXAM * acc.correct as f32;
     let p = (weighted_success / effective).clamp(0.0, 1.0);
     let (lo, hi) = wilson_interval(p, effective);
     let justification = format!(
-        "Based on {} flashcard reviews and {} practice-exam questions.",
-        acc.reviewed_cards as u32, acc.total
+        "Based on {} practice-exam questions and {} flashcard reviews in this section.",
+        acc.total, acc.reviewed_cards as u32
     );
     let performance = percent_estimate(p, lo, hi, acc.last_updated, justification.clone());
     let readiness = score_estimate(
@@ -357,6 +399,26 @@ mod test {
 
     use super::*;
 
+    /// Record a practice exam answering `correct`/`total` questions in `topic`.
+    fn record(col: &mut Collection, topic: &str, correct: u32, total: u32) -> Result<()> {
+        col.record_practice_exam(RecordPracticeExamRequest {
+            results: vec![TopicResult {
+                topic: topic.to_string(),
+                correct,
+                total,
+            }],
+            timestamp: 0,
+        })
+    }
+
+    /// The four practice-exam topic keys, one per MCAT section.
+    const TOPIC_KEYS: &[&str] = &[
+        "biology_biochemistry",
+        "chemistry_physics",
+        "psychology_sociology",
+        "cars",
+    ];
+
     #[test]
     fn insufficient_when_no_data() -> Result<()> {
         let mut col = Collection::new();
@@ -370,19 +432,39 @@ mod test {
     }
 
     #[test]
-    fn practice_exam_produces_estimate_within_scale() -> Result<()> {
+    fn one_section_alone_does_not_unlock_overall() -> Result<()> {
         let mut col = Collection::new();
         col.seed_mcat_decks()?;
 
-        // Answer enough biology questions to clear the data threshold.
-        col.record_practice_exam(RecordPracticeExamRequest {
-            results: vec![TopicResult {
-                topic: "biology_biochemistry".to_string(),
-                correct: 8,
-                total: 10,
-            }],
-            timestamp: 0,
-        })?;
+        // A full exam in just one topic makes that section confident, but the
+        // overall estimate stays insufficient until every covered topic has one.
+        record(&mut col, "biology_biochemistry", 8, MIN_EXAM_QUESTIONS_PER_SECTION)?;
+
+        let metrics = col.exam_metrics()?;
+        assert!(
+            !metrics.performance_overall.unwrap().has_enough_data,
+            "one section should not unlock the overall estimate"
+        );
+
+        let biology = metrics
+            .performance_sections
+            .iter()
+            .find(|s| s.section == "Biology & Biochemistry")
+            .and_then(|s| s.estimate.as_ref())
+            .unwrap();
+        assert!(biology.has_enough_data, "the answered section should be confident");
+        Ok(())
+    }
+
+    #[test]
+    fn all_sections_unlock_overall_within_scale() -> Result<()> {
+        let mut col = Collection::new();
+        col.seed_mcat_decks()?;
+
+        // A full practice exam in every covered topic.
+        for topic in TOPIC_KEYS {
+            record(&mut col, topic, 8, MIN_EXAM_QUESTIONS_PER_SECTION)?;
+        }
 
         let metrics = col.exam_metrics()?;
         let overall_perf = metrics.performance_overall.unwrap();
@@ -402,11 +484,34 @@ mod test {
     }
 
     #[test]
+    fn short_exam_is_not_enough() -> Result<()> {
+        let mut col = Collection::new();
+        col.seed_mcat_decks()?;
+
+        // A short quiz (below the per-section threshold) never states a number.
+        for topic in TOPIC_KEYS {
+            record(&mut col, topic, 1, MIN_EXAM_QUESTIONS_PER_SECTION - 1)?;
+        }
+
+        let metrics = col.exam_metrics()?;
+        assert!(!metrics.performance_overall.unwrap().has_enough_data);
+        assert!(
+            metrics
+                .performance_sections
+                .iter()
+                .all(|s| !s.estimate.as_ref().unwrap().has_enough_data),
+            "no section should be confident on a short quiz"
+        );
+        Ok(())
+    }
+
+    #[test]
     fn exam_weighted_more_than_flashcards() {
         // A section with only exam data at 90% should land near 90%.
         let acc = SectionAccumulator {
             sum_retrievability: 0.0,
             reviewed_cards: 0.0,
+            present_cards: 0,
             correct: 9,
             total: 10,
             last_updated: 0,

@@ -14,6 +14,7 @@ License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
         buildExam,
         type ExamItem,
         type ExamPhase,
+        mergeBanks,
         scoreByTopic,
         type TopicKey,
     } from "./lib";
@@ -25,8 +26,9 @@ License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
     let items: ExamItem[] = [];
     let currentIndex = 0;
 
-    function start(count: number, topics: TopicKey[]) {
-        items = buildExam(data.bank, count, topics);
+    function start(count: number, topics: TopicKey[], useGenerated: boolean) {
+        const pool = mergeBanks(data.hardcoded, data.generated, useGenerated);
+        items = buildExam(pool, count, topics);
         currentIndex = 0;
         phase = items.length > 0 ? "in-progress" : "config";
     }
@@ -81,7 +83,7 @@ License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
 </script>
 
 {#if phase === "config"}
-    <ExamConfig bank={data.bank} onStart={start} />
+    <ExamConfig hardcoded={data.hardcoded} generated={data.generated} onStart={start} />
 {:else if phase === "in-progress"}
     <ExamQuestion
         item={items[currentIndex]}
