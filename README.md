@@ -19,7 +19,20 @@ In addition to specializing in MCAT studying, this clone also implements:
 - Practice exam mode. This mode allows the user to take a practice exam with questions from the MCAT exam content and personalize the content to their needs.
     - Problems derived from Kaplan's MCAT test prep books.
 
-There is also a mobile version found here: https://github.com/anthonyzheng-alpha/speedrun-mobile
+## Mobile (Android)
+
+The Android app lives in two sibling repositories (folder names are required by Gradle):
+
+```
+parent-folder/
+  speedrun-android/          ← Kotlin UI (AnkiDroid fork)
+  speedrun-android-backend/  ← MCAT Rust backend
+```
+
+- [speedrun-android](https://github.com/anthonyzheng-alpha/speedrun-android) — UI, practice exam, exam coverage
+- [speedrun-android-backend](https://github.com/anthonyzheng-alpha/speedrun-android-backend) — Rust backend with MCAT scheduling and metrics
+
+To run on an Android emulator, follow the **Run on an Android emulator** section in the [speedrun-android README](https://github.com/anthonyzheng-alpha/speedrun-android#run-on-an-android-emulator). You do not need this desktop repo to build the Android app.
 
 ## Getting Started
 
