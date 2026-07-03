@@ -9,11 +9,13 @@ ROOT = Path(__file__).resolve().parents[1]
 MCAT_RS = ROOT / "rslib" / "src" / "collection" / "mcat.rs"
 OUT = ROOT / "tools" / "mcat_flashcard_audit.json"
 
+# Each MCAT section can be covered by several Jack Westin books; the first entry
+# is treated as the primary/default when a single book must be chosen.
 JW_BOOKS = {
-    "MCAT::Biology & Biochemistry": "biochemistry",
-    "MCAT::Chemistry & Physics": "general-chemistry",
-    "MCAT::Psychology & Sociology": "behavioral-sciences",
-    "MCAT::Critical Analysis & Reasoning (CARS)": "cars",
+    "MCAT::Biology & Biochemistry": ["biology", "biochemistry"],
+    "MCAT::Chemistry & Physics": ["general-chemistry", "organic-chemistry", "physics"],
+    "MCAT::Psychology & Sociology": ["behavioral-sciences"],
+    "MCAT::Critical Analysis & Reasoning (CARS)": ["cars"],
 }
 
 CHEM_PHYS_KEYWORDS = {
@@ -37,7 +39,8 @@ def suggest_jw_book(deck: str, front: str, back: str) -> str:
             if any(k.lower() in text for k in keywords):
                 return book
         return "general-chemistry"
-    return JW_BOOKS.get(deck, "unknown")
+    books = JW_BOOKS.get(deck)
+    return books[0] if books else "unknown"
 
 
 def main() -> None:

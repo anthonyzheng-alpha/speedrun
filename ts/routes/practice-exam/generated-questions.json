@@ -1,0 +1,458 @@
+{
+    "topics": [
+        "biology_biochemistry",
+        "chemistry_physics",
+        "psychology_sociology",
+        "cars"
+    ],
+    "questions": [
+        {
+            "id": "gen-bb-001",
+            "topic": "biology_biochemistry",
+            "passage": "",
+            "question": "Which of the following enzymes is responsible for unwinding the DNA helix during replication?",
+            "choices": [
+                "DNA polymerase",
+                "RNA polymerase",
+                "Helicase",
+                "Ligase"
+            ],
+            "answerIndex": 2,
+            "explanation": "Helicase is the enzyme that unwinds the DNA double helix at the replication fork, allowing the DNA polymerase to synthesize the new strand."
+        },
+        {
+            "id": "gen-bb-002",
+            "topic": "biology_biochemistry",
+            "passage": "",
+            "question": "The presence of which of the following structures is unique to gram-negative bacteria?",
+            "choices": [
+                "Thick peptidoglycan layer",
+                "Lipopolysaccharide layer",
+                "Teichoic acids",
+                "Flagella"
+            ],
+            "answerIndex": 1,
+            "explanation": "Gram-negative bacteria have a thin peptidoglycan layer and an outer membrane that contains lipopolysaccharides, which are absent in gram-positive bacteria."
+        },
+        {
+            "id": "gen-bb-003",
+            "topic": "biology_biochemistry",
+            "passage": "",
+            "question": "Which process is responsible for the transfer of genetic information from RNA to a protein?",
+            "choices": [
+                "Replication",
+                "Transcription",
+                "Translation",
+                "Transformation"
+            ],
+            "answerIndex": 2,
+            "explanation": "Translation is the process by which ribosomes synthesize proteins using the mRNA template."
+        },
+        {
+            "id": "gen-bb-004",
+            "topic": "biology_biochemistry",
+            "passage": "",
+            "question": "Which of the following best describes the role of NAD+ in cellular respiration?",
+            "choices": [
+                "Carries electrons to the electron transport chain",
+                "Acts as a substrate for glycolysis",
+                "Forms ATP in the citric acid cycle",
+                "Participates in the chemiosmotic gradient"
+            ],
+            "answerIndex": 0,
+            "explanation": "NAD+ functions as an electron carrier, accepting electrons during glycolysis and the citric acid cycle to form NADH, which then donates electrons to the electron transport chain."
+        },
+        {
+            "id": "gen-bb-005",
+            "topic": "biology_biochemistry",
+            "passage": "",
+            "question": "Which of the following statements about enzymes is true?",
+            "choices": [
+                "Enzymes are consumed in the reactions they catalyze.",
+                "Enzymes increase the activation energy of reactions.",
+                "Enzymes can function at any pH and temperature.",
+                "Enzymes lower the activation energy of reactions they catalyze."
+            ],
+            "answerIndex": 3,
+            "explanation": "Enzymes lower the activation energy of chemical reactions, thereby increasing the reaction rate without being consumed in the process."
+        },
+        {
+            "id": "gen-bb-006",
+            "topic": "biology_biochemistry",
+            "passage": "",
+            "question": "Which of the following amino acids contains a sulfur atom?",
+            "choices": [
+                "Alanine",
+                "Methionine",
+                "Lysine",
+                "Serine"
+            ],
+            "answerIndex": 1,
+            "explanation": "Methionine is one of the two sulfur-containing amino acids, the other being cysteine. Alanine, lysine, and serine do not contain sulfur."
+        },
+        {
+            "id": "gen-bb-007",
+            "topic": "biology_biochemistry",
+            "passage": "",
+            "question": "What is the main function of the smooth endoplasmic reticulum in a cell?",
+            "choices": [
+                "Protein synthesis",
+                "Lipid synthesis",
+                "DNA replication",
+                "ATP production"
+            ],
+            "answerIndex": 1,
+            "explanation": "The smooth endoplasmic reticulum is primarily involved in lipid synthesis and metabolism, unlike the rough ER, which is associated with protein synthesis."
+        },
+        {
+            "id": "gen-bb-008",
+            "topic": "biology_biochemistry",
+            "passage": "",
+            "question": "Which of the following is a characteristic of an autosomal recessive genetic disorder?",
+            "choices": [
+                "It occurs equally in males and females.",
+                "It is more common in males than females.",
+                "It is typically passed from father to son.",
+                "Carriers are always affected."
+            ],
+            "answerIndex": 0,
+            "explanation": "Autosomal recessive disorders appear equally in males and females and require two copies of the mutant gene for the phenotype to be expressed."
+        },
+        {
+            "id": "gen-cp-001",
+            "topic": "chemistry_physics",
+            "passage": "",
+            "question": "What is the most likely product when 1-hexene undergoes hydroboration-oxidation?",
+            "choices": [
+                "1-hexanol",
+                "2-hexanol",
+                "3-hexanol",
+                "hexane"
+            ],
+            "answerIndex": 0,
+            "explanation": "Hydroboration-oxidation of alkenes results in anti-Markovnikov addition of water, leading to the formation of the alcohol at the less substituted carbon. In 1-hexene, this results in the production of 1-hexanol."
+        },
+        {
+            "id": "gen-cp-002",
+            "topic": "chemistry_physics",
+            "passage": "",
+            "question": "Which of the following processes is most likely to increase the entropy of a system?",
+            "choices": [
+                "Freezing of water",
+                "Condensation of steam",
+                "Melting of ice",
+                "Formation of a salt from its ions"
+            ],
+            "answerIndex": 2,
+            "explanation": "Melting of ice increases the disorder of the system as the solid structure breaks down into a liquid form, thus increasing entropy. In contrast, freezing, condensation, and formation of salts decrease or maintain entropy."
+        },
+        {
+            "id": "gen-cp-003",
+            "topic": "chemistry_physics",
+            "passage": "",
+            "question": "A solution has a pH of 3. What is the concentration of hydrogen ions in this solution?",
+            "choices": [
+                "3 M",
+                "0.003 M",
+                "0.0003 M",
+                "0.001 M"
+            ],
+            "answerIndex": 3,
+            "explanation": "The pH of a solution is the negative logarithm of the hydrogen ion concentration. A pH of 3 corresponds to a hydrogen ion concentration of 10^-3 M, which is 0.001 M."
+        },
+        {
+            "id": "gen-cp-004",
+            "topic": "chemistry_physics",
+            "passage": "",
+            "question": "Which of the following molecules is nonpolar despite having polar bonds?",
+            "choices": [
+                "H2O",
+                "NH3",
+                "CO2",
+                "CH3Cl"
+            ],
+            "answerIndex": 2,
+            "explanation": "CO2 is a linear molecule with polar bonds, but the dipoles cancel each other out, resulting in a nonpolar molecule. H2O, NH3, and CH3Cl are polar due to their molecular geometry."
+        },
+        {
+            "id": "gen-cp-005",
+            "topic": "chemistry_physics",
+            "passage": "",
+            "question": "Which of the following is NOT a characteristic of an ideal gas?",
+            "choices": [
+                "The gas particles have no volume.",
+                "Collisions between gas particles are perfectly elastic.",
+                "There are no attractive forces between gas particles.",
+                "The average kinetic energy of the gas particles is independent of temperature."
+            ],
+            "answerIndex": 3,
+            "explanation": "In an ideal gas, the average kinetic energy of the particles is directly proportional to the absolute temperature, not independent of it. The other choices describe ideal gas characteristics."
+        },
+        {
+            "id": "gen-cp-006",
+            "topic": "chemistry_physics",
+            "passage": "",
+            "question": "Which type of radioactive decay results in the increase of atomic number by one?",
+            "choices": [
+                "Alpha decay",
+                "Beta-minus decay",
+                "Beta-plus decay",
+                "Gamma decay"
+            ],
+            "answerIndex": 1,
+            "explanation": "In beta-minus decay, a neutron is converted into a proton, which increases the atomic number by one. Alpha decay decreases the atomic number, beta-plus decay decreases it, and gamma decay does not change the atomic number."
+        },
+        {
+            "id": "gen-cp-007",
+            "topic": "chemistry_physics",
+            "passage": "",
+            "question": "What type of bond is primarily responsible for the high boiling point of water?",
+            "choices": [
+                "Ionic bond",
+                "Covalent bond",
+                "Hydrogen bond",
+                "Van der Waals forces"
+            ],
+            "answerIndex": 2,
+            "explanation": "Hydrogen bonds, which occur between the hydrogen atom of one water molecule and the oxygen atom of another, are responsible for the high boiling point of water due to their strong intermolecular attraction."
+        },
+        {
+            "id": "gen-cp-008",
+            "topic": "chemistry_physics",
+            "passage": "",
+            "question": "How many stereoisomers are possible for a molecule with two chiral centers?",
+            "choices": [
+                "2",
+                "3",
+                "4",
+                "6"
+            ],
+            "answerIndex": 2,
+            "explanation": "For a molecule with n chiral centers, the number of possible stereoisomers is 2^n. With two chiral centers, 2^2 = 4 stereoisomers are possible."
+        },
+        {
+            "id": "gen-ps-001",
+            "topic": "psychology_sociology",
+            "passage": "",
+            "question": "Which of the following theories best explains why individuals may conform to a group's behaviors or beliefs?",
+            "choices": [
+                "Social Learning Theory",
+                "Drive Reduction Theory",
+                "Social Identity Theory",
+                "Cognitive Dissonance Theory"
+            ],
+            "answerIndex": 2,
+            "explanation": "Social Identity Theory explains that individuals conform to group norms to maintain a sense of belonging and identity within the group."
+        },
+        {
+            "id": "gen-ps-002",
+            "topic": "psychology_sociology",
+            "passage": "",
+            "question": "What is the primary neurotransmitter involved in the reward pathway of the brain?",
+            "choices": [
+                "Serotonin",
+                "Dopamine",
+                "GABA",
+                "Acetylcholine"
+            ],
+            "answerIndex": 1,
+            "explanation": "Dopamine is the primary neurotransmitter associated with the brain's reward pathway, which reinforces behaviors by providing a sense of pleasure."
+        },
+        {
+            "id": "gen-ps-003",
+            "topic": "psychology_sociology",
+            "passage": "",
+            "question": "In classical conditioning, what term describes a stimulus that naturally and automatically triggers a response without prior learning?",
+            "choices": [
+                "Conditioned Stimulus",
+                "Neutral Stimulus",
+                "Unconditioned Stimulus",
+                "Conditioned Response"
+            ],
+            "answerIndex": 2,
+            "explanation": "An Unconditioned Stimulus naturally and automatically triggers a response without the need for prior learning, as exemplified by Pavlov's dog experiment where food caused salivation."
+        },
+        {
+            "id": "gen-ps-004",
+            "topic": "psychology_sociology",
+            "passage": "",
+            "question": "According to Piaget, which stage of cognitive development is characterized by the ability to think logically about concrete events?",
+            "choices": [
+                "Sensorimotor",
+                "Preoperational",
+                "Concrete Operational",
+                "Formal Operational"
+            ],
+            "answerIndex": 2,
+            "explanation": "The Concrete Operational stage, occurring from about 7 to 11 years old, involves logical thinking about concrete events and understanding the concept of conservation."
+        },
+        {
+            "id": "gen-ps-005",
+            "topic": "psychology_sociology",
+            "passage": "",
+            "question": "Which of the following is an example of a secondary group?",
+            "choices": [
+                "A family dinner",
+                "A work team",
+                "A group of close friends",
+                "A neighborhood barbecue"
+            ],
+            "answerIndex": 1,
+            "explanation": "A work team is an example of a secondary group, characterized by impersonal, goal-oriented relationships and usually shorter durations."
+        },
+        {
+            "id": "gen-ps-006",
+            "topic": "psychology_sociology",
+            "passage": "",
+            "question": "What term refers to the tendency for individuals in a group to adopt more extreme positions than they would individually?",
+            "choices": [
+                "Groupthink",
+                "Social Loafing",
+                "Group Polarization",
+                "Deindividuation"
+            ],
+            "answerIndex": 2,
+            "explanation": "Group Polarization refers to the phenomenon where group discussion leads to the adoption of more extreme positions, as individuals align with the perceived group consensus."
+        },
+        {
+            "id": "gen-ps-007",
+            "topic": "psychology_sociology",
+            "passage": "",
+            "question": "Which psychological concept is demonstrated when a person performs better on tasks in the presence of others?",
+            "choices": [
+                "Social Facilitation",
+                "Social Inhibition",
+                "Social Loafing",
+                "Social Identity"
+            ],
+            "answerIndex": 0,
+            "explanation": "Social Facilitation is the improved performance on tasks when in the presence of others, typically observed with simple or well-rehearsed tasks."
+        },
+        {
+            "id": "gen-ps-008",
+            "topic": "psychology_sociology",
+            "passage": "",
+            "question": "In Freud's theory of personality, which component operates based on the pleasure principle?",
+            "choices": [
+                "Id",
+                "Ego",
+                "Superego",
+                "Conscious"
+            ],
+            "answerIndex": 0,
+            "explanation": "The Id operates based on the pleasure principle, seeking immediate gratification of all desires, wants, and needs."
+        },
+        {
+            "id": "gen-cars-001",
+            "topic": "cars",
+            "passage": "In recent years, the debate over the merits of modernist versus traditional architecture has intensified, with each style having its own proponents and critics. Modernist architecture is characterized by minimalism, open spaces, and the use of materials such as steel and glass. It emphasizes function over form, often resulting in buildings that are sleek and devoid of ornamentation. In contrast, traditional architecture draws on historical styles, often incorporating intricate designs and decorative elements. Advocates of modernism argue that this style reflects the spirit of progress and the technological advances of the 20th and 21st centuries. They claim that modernist buildings are more efficient and better suited to contemporary urban environments. On the other hand, critics of modernism contend that its stark, impersonal aesthetic lacks warmth and fails to respect the cultural heritage embedded in traditional architectural styles. Traditionalists assert that architecture should resonate with cultural identities and historical continuity. They argue that buildings should harmonize with their surroundings and contribute to a sense of place. This ongoing debate raises questions about the role of architecture in society and the values it should reflect.",
+            "question": "Which of the following statements is most likely supported by the passage?",
+            "choices": [
+                "Modernist architecture is universally preferred due to its efficiency.",
+                "Traditional architecture disregards technological advances.",
+                "The debate between modernism and traditional architecture involves values and cultural identity.",
+                "Architectural styles have no impact on the sense of place."
+            ],
+            "answerIndex": 2,
+            "explanation": "The passage discusses how the debate between modernist and traditional architecture involves differing values and cultural identity, making choice (C) the answer. Choice (A) is incorrect as the passage does not claim universal preference for modernist efficiency. Choice (B) is incorrect since the passage does not state that traditional architecture disregards technology, only that it emphasizes cultural aspects. Choice (D) is incorrect because the passage implies that architecture does impact the sense of place."
+        },
+        {
+            "id": "gen-cars-002",
+            "topic": "cars",
+            "passage": "The term 'science fiction' was coined in the 1920s, and the genre has since grown to include a wide array of narratives exploring speculative futures, advanced technologies, and alien worlds. Science fiction is often praised for its ability to address complex societal issues through metaphor and allegory, providing a lens through which contemporary problems can be examined and critiqued. Authors such as Isaac Asimov, Philip K. Dick, and Ursula K. Le Guin have used the genre to explore themes of identity, power, and ethics. However, science fiction has also faced criticism for its perceived detachment from reality and overreliance on fantastical elements. Some argue that it lacks the depth of more 'serious' literary genres and that its speculative nature can make it less relevant to immediate human concerns. Despite such criticisms, science fiction has maintained a robust presence in popular culture, suggesting that its imaginative scope continues to resonate with audiences. It challenges readers to envision alternate realities and consider the implications of technological and social change.",
+            "question": "According to the passage, which aspect of science fiction is most appreciated by its proponents?",
+            "choices": [
+                "Its focus on immediate human concerns.",
+                "Its ability to predict technological advances.",
+                "Its use of metaphor and allegory to address societal issues.",
+                "Its detachment from reality."
+            ],
+            "answerIndex": 2,
+            "explanation": "The passage highlights that proponents appreciate science fiction's use of metaphor and allegory to address societal issues, making choice (C) the correct answer. Choice (A) is incorrect because the passage suggests that science fiction may not focus on immediate human concerns. Choice (B) is not mentioned in the passage, and choice (D) is presented as a criticism, not an appreciation."
+        },
+        {
+            "id": "gen-cars-003",
+            "topic": "cars",
+            "passage": "The emergence of digital technology has transformed the music industry, leading to significant changes in how music is produced, distributed, and consumed. In the past, record labels played a pivotal role in the industry, providing the resources necessary for artists to record and distribute their music. However, advancements in digital technology have democratized the music production process, allowing independent artists to produce and release music without the backing of a major label. Online platforms such as SoundCloud and Bandcamp have enabled artists to reach global audiences with minimal resources. While this shift has allowed for greater artistic freedom and diversity, it has also led to challenges such as market saturation and income instability for artists. The ease of access to music has resulted in a decline in physical album sales, with streaming services becoming the dominant mode of consumption. This change has sparked debates about the sustainability of the music industry and the fair compensation of artists in the digital age.",
+            "question": "Which of the following statements is most consistent with the passage's description of the digital transformation in the music industry?",
+            "choices": [
+                "Digital technology has limited artists' ability to reach audiences.",
+                "Record labels have become more critical in the digital age.",
+                "Streaming services have contributed to the decline of physical album sales.",
+                "Independent artists no longer face any challenges in the industry."
+            ],
+            "answerIndex": 2,
+            "explanation": "The passage states that the rise of streaming services has led to a decline in physical album sales, making choice (C) the correct answer. Choice (A) contradicts the passage, which indicates that artists can reach global audiences more easily. Choice (B) is incorrect because the passage suggests that record labels are less necessary due to digital technology. Choice (D) is incorrect as the passage mentions challenges such as market saturation and income instability for independent artists."
+        },
+        {
+            "id": "gen-cars-004",
+            "topic": "cars",
+            "passage": "The environmental movement has undergone significant evolution since its inception in the late 19th century. Initially focused on conservation and the protection of natural landscapes, early environmentalists sought to preserve wilderness areas as national parks. Figures such as John Muir and Gifford Pinchot played pivotal roles in advocating for the safeguarding of America’s natural resources. In the mid-20th century, the environmental movement broadened its scope to address pollution and public health issues, spurred by incidents like the Cuyahoga River fire and the publication of Rachel Carson’s 'Silent Spring'. This period saw the rise of environmental legislation, including the establishment of the Environmental Protection Agency (EPA) in 1970. In recent decades, the movement has further expanded to encompass global issues such as climate change and biodiversity loss. It now emphasizes sustainable development and the interconnectedness of human and ecological systems. While the movement has achieved significant successes, it faces ongoing challenges, particularly in balancing economic growth with environmental stewardship.",
+            "question": "Based on the passage, which of the following best describes the evolution of the environmental movement?",
+            "choices": [
+                "A transition from focusing on pollution to concentrating solely on wilderness preservation.",
+                "A shift from national to global environmental concerns.",
+                "A consistent emphasis on economic growth over ecological stewardship.",
+                "A decline in the importance of public health issues."
+            ],
+            "answerIndex": 1,
+            "explanation": "The passage outlines the transition from a focus on national conservation efforts to addressing global issues such as climate change, making choice (B) the correct answer. Choice (A) is incorrect as the passage describes the movement expanding its scope rather than shifting focus away from pollution. Choice (C) is incorrect because the passage mentions challenges in balancing economic growth with environmental stewardship, not an emphasis on economic growth. Choice (D) is incorrect as public health issues were significant during the mid-20th century phase."
+        },
+        {
+            "id": "gen-cars-005",
+            "topic": "cars",
+            "passage": "The literary concept of the unreliable narrator has fascinated readers and critics alike, offering a unique lens through which to examine narrative truth. An unreliable narrator is one whose credibility has been seriously compromised, whether through intentional deceit or through psychological instability. This narrative device invites readers to question the veracity of the story being presented, creating layers of meaning and ambiguity. Classic examples of unreliable narrators include the protagonists of Edgar Allan Poe's 'The Tell-Tale Heart' and Agatha Christie's 'The Murder of Roger Ackroyd'. By weaving an unreliable narrative, authors can manipulate reader expectations and explore themes of perception, reality, and truth. Critics argue that the unreliable narrator enhances reader engagement by requiring active interpretation and skepticism. This literary technique also allows authors to delve into the complexities of human psychology, illustrating how personal biases and mental states can distort reality.",
+            "question": "What is the primary function of an unreliable narrator as described in the passage?",
+            "choices": [
+                "To simplify the narrative structure.",
+                "To encourage readers to accept the story at face value.",
+                "To engage readers through active interpretation and skepticism.",
+                "To eliminate ambiguity in storytelling."
+            ],
+            "answerIndex": 2,
+            "explanation": "The passage describes the unreliable narrator as enhancing reader engagement by requiring active interpretation and skepticism, making choice (C) the correct answer. Choice (A) is incorrect as the passage implies that unreliable narrators add complexity. Choice (B) is incorrect because the passage suggests the opposite—readers are encouraged to question the story. Choice (D) is incorrect because the passage states that unreliable narrators create layers of meaning and ambiguity."
+        },
+        {
+            "id": "gen-cars-006",
+            "topic": "cars",
+            "passage": "In his philosophical writings, Immanuel Kant distinguishes between phenomena, the world as we experience it, and noumena, the world as it is in itself. Kant argues that human perception is limited to phenomena, as our senses and cognitive faculties shape our understanding of reality. This means that while we can have empirical knowledge of the world, such knowledge is always mediated by human perception. Noumena, on the other hand, represent the things-in-themselves—reality unfiltered by human experience. According to Kant, noumena are beyond the grasp of human cognition, as we can never access reality in its pure form. This distinction has profound implications for epistemology, the philosophical study of knowledge. It suggests that our understanding of the world is always partial and subjective, limited by the conditions of human perception. Kant’s philosophy thus challenges the notion that humans can attain absolute knowledge, highlighting the inherent limits of human reason.",
+            "question": "According to the passage, what does Kant argue about human perception and reality?",
+            "choices": [
+                "Humans can fully perceive noumena with special training.",
+                "Human perception is capable of accessing absolute knowledge.",
+                "Our understanding of reality is always mediated by human perception.",
+                "Noumena are easily understood through empirical observation."
+            ],
+            "answerIndex": 2,
+            "explanation": "The passage states that Kant argues our understanding of reality is mediated by human perception, making choice (C) the correct answer. Choice (A) is incorrect because Kant argues that noumena are beyond human cognition. Choice (B) is incorrect because Kant challenges the notion of attaining absolute knowledge. Choice (D) is incorrect as the passage emphasizes that noumena are not accessible through empirical observation."
+        },
+        {
+            "id": "gen-cars-007",
+            "topic": "cars",
+            "passage": "The role of satire in literature is to critique and illuminate the follies and vices of society through humor and irony. By exaggerating and mocking societal norms, satire provokes reflection and challenges the status quo. Historically, satirical works have targeted political figures, cultural institutions, and social conventions. Jonathan Swift's 'A Modest Proposal' and George Orwell's 'Animal Farm' are classic examples that use satire to address serious issues such as economic inequality and totalitarianism. While satire can be a powerful tool for social commentary, it relies heavily on the audience's ability to discern irony and underlying messages. The effectiveness of satire is also contingent upon the cultural context in which it is presented, as humor and irony can be misinterpreted or lost entirely without a shared understanding of the issues being critiqued.",
+            "question": "What is the primary purpose of satire in literature according to the passage?",
+            "choices": [
+                "To entertain without any underlying critique.",
+                "To reinforce societal norms through humor.",
+                "To provoke reflection and challenge the status quo.",
+                "To provide a straightforward narrative of political events."
+            ],
+            "answerIndex": 2,
+            "explanation": "The passage explains that satire uses humor and irony to provoke reflection and challenge societal norms, making choice (C) the correct answer. Choice (A) is incorrect as the passage specifies satire aims to critique, not just entertain. Choice (B) is incorrect because satire is described as challenging, not reinforcing, norms. Choice (D) is incorrect as satire is not about providing straightforward narratives."
+        },
+        {
+            "id": "gen-cars-008",
+            "topic": "cars",
+            "passage": "The development of public libraries in the 19th and 20th centuries marked a significant shift in access to knowledge and information. Prior to their establishment, books and educational resources were largely confined to private collections and academic institutions, limiting access to the elite. Public libraries democratized knowledge by making books available to all members of society, regardless of socioeconomic status. They became centers for learning and community engagement, offering educational programs, lectures, and cultural events. The mission of public libraries has evolved over time to include access to technology and digital resources, reflecting changes in the way information is consumed. Despite facing challenges such as funding cuts and competition from digital media, public libraries continue to play a vital role in promoting literacy and lifelong learning. They remain symbols of the belief that access to information is a fundamental right and a cornerstone of an informed and equitable society.",
+            "question": "What was a key impact of the establishment of public libraries according to the passage?",
+            "choices": [
+                "They limited access to books to a select few.",
+                "They solely focused on preserving rare manuscripts.",
+                "They democratized access to knowledge and information.",
+                "They replaced all academic institutions as knowledge centers."
+            ],
+            "answerIndex": 2,
+            "explanation": "The passage states that public libraries democratized knowledge by making books available to all societal members, making choice (C) the correct answer. Choice (A) is incorrect as it describes the situation before public libraries. Choice (B) is incorrect because the passage focuses on broader access rather than preserving manuscripts. Choice (D) is incorrect as the passage does not claim that libraries replaced academic institutions."
+        }
+    ]
+}

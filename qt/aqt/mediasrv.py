@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import enum
+import json
 import logging
 import mimetypes
 import os
@@ -705,6 +706,25 @@ def save_custom_colours() -> bytes:
     return b""
 
 
+def generate_practice_exam() -> bytes:
+    """Generate + verify MCAT practice questions in real time via OpenAI.
+
+    Returns JSON (encoded) of the form {"questions": [...]} on success, or
+    {"error": "..."} so the frontend can fall back to the bundled banks.
+    """
+    from aqt import practice_exam_gen
+
+    try:
+        payload = json.loads(request.data or b"{}")
+        count = int(payload.get("count", 5))
+        topics = payload.get("topics") or list(practice_exam_gen.TOPICS)
+        questions = practice_exam_gen.generate_exam(count, topics)
+        return json.dumps({"questions": questions}).encode("utf-8")
+    except Exception as exc:  # noqa: BLE001 - report to frontend for fallback
+        print(traceback.format_exc())
+        return json.dumps({"error": str(exc)}).encode("utf-8")
+
+
 post_handler_list = [
     congrats_info,
     get_deck_configs_for_update,
@@ -721,6 +741,7 @@ post_handler_list = [
     deck_options_require_close,
     deck_options_ready,
     save_custom_colours,
+    generate_practice_exam,
 ]
 
 

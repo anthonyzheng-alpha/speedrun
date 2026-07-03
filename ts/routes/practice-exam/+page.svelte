@@ -14,6 +14,7 @@ License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
         buildExam,
         type ExamItem,
         type ExamPhase,
+        generatePracticeExam,
         mergeBanks,
         scoreByTopic,
         type TopicKey,
@@ -25,10 +26,38 @@ License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
     let phase: ExamPhase = "config";
     let items: ExamItem[] = [];
     let currentIndex = 0;
+    let notice = "";
 
-    function start(count: number, topics: TopicKey[], useGenerated: boolean) {
-        const pool = mergeBanks(data.hardcoded, data.generated, useGenerated);
-        items = buildExam(pool, count, topics);
+    async function start(count: number, topics: TopicKey[], useGenerated: boolean) {
+        notice = "";
+        if (!useGenerated) {
+            beginExam(buildExam(mergeBanks(data.hardcoded, data.generated, false), count, topics));
+            return;
+        }
+
+        phase = "loading";
+        try {
+            const live = await generatePracticeExam(count, topics);
+            // Top up from the bundled banks if generation returned fewer than asked.
+            let pool = live;
+            if (live.length < count) {
+                const haveIds = new Set(live.map((q) => q.id));
+                const fallback = mergeBanks(data.hardcoded, data.generated, true).filter(
+                    (q) => !haveIds.has(q.id),
+                );
+                pool = [...live, ...fallback];
+            }
+            beginExam(buildExam(pool, count, topics));
+        } catch (error) {
+            console.error("live generation failed, using bundled questions", error);
+            notice =
+                "Couldn't generate new questions right now - using saved questions instead.";
+            beginExam(buildExam(mergeBanks(data.hardcoded, data.generated, true), count, topics));
+        }
+    }
+
+    function beginExam(built: ExamItem[]) {
+        items = built;
         currentIndex = 0;
         phase = items.length > 0 ? "in-progress" : "config";
     }
@@ -78,13 +107,28 @@ License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
     function retake() {
         items = [];
         currentIndex = 0;
+        notice = "";
         phase = "config";
     }
 </script>
 
 {#if phase === "config"}
     <ExamConfig hardcoded={data.hardcoded} generated={data.generated} onStart={start} />
+{:else if phase === "loading"}
+    <div class="practice-exam">
+        <h1>Generating your exam...</h1>
+        <div class="subtitle">
+            Writing and checking fresh MCAT questions with AI. This can take a little
+            while - hang tight.
+        </div>
+        <div class="pe-card">Please wait while we prepare your questions.</div>
+    </div>
 {:else if phase === "in-progress"}
+    {#if notice}
+        <div class="practice-exam" style="padding-bottom: 0;">
+            <div class="subtitle">{notice}</div>
+        </div>
+    {/if}
     <ExamQuestion
         item={items[currentIndex]}
         index={currentIndex}

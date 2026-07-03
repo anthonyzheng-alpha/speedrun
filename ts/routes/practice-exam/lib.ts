@@ -43,14 +43,58 @@ export interface ExamItem {
 }
 
 /** The high level screen the exam UI is currently showing. */
-export type ExamPhase = "config" | "in-progress" | "results";
+export type ExamPhase = "config" | "loading" | "in-progress" | "results";
+
+/**
+ * Ask the Python backend to generate + verify a fresh set of questions in real
+ * time. The practice-exam webview is granted API access, so the Authorization
+ * header is injected automatically by Qt; we only set the content type.
+ */
+export async function generatePracticeExam(
+    count: number,
+    topics: TopicKey[],
+): Promise<PracticeQuestion[]> {
+    const body = new TextEncoder().encode(JSON.stringify({ count, topics }));
+    const resp = await fetch("/_anki/generatePracticeExam", {
+        method: "POST",
+        headers: { "Content-Type": "application/binary" },
+        body,
+    });
+    if (!resp.ok) {
+        throw new Error(`generatePracticeExam failed: ${resp.status}`);
+    }
+    const data = (await resp.json()) as {
+        questions?: PracticeQuestion[];
+        error?: string;
+    };
+    if (data.error) {
+        throw new Error(data.error);
+    }
+    return data.questions ?? [];
+}
+
+/**
+ * The pool of questions to draw from: always the hardcoded bank, plus the
+ * AI-generated bank when the toggle is on.
+ */
+export function mergeBanks(
+    hardcoded: QuestionBank,
+    generated: QuestionBank,
+    useGenerated: boolean,
+): PracticeQuestion[] {
+    const pool = [...hardcoded.questions];
+    if (useGenerated) {
+        pool.push(...generated.questions);
+    }
+    return pool;
+}
 
 /** How many questions are available for the currently-enabled topics. */
 export function countAvailable(
-    bank: QuestionBank,
+    questions: PracticeQuestion[],
     enabledTopics: TopicKey[],
 ): number {
-    return bank.questions.filter((q) => enabledTopics.includes(q.topic)).length;
+    return questions.filter((q) => enabledTopics.includes(q.topic)).length;
 }
 
 /** Fisher-Yates shuffle producing a new array (does not mutate input). */
@@ -68,11 +112,11 @@ function shuffle<T>(items: T[]): T[] {
  * questions are available than requested, every available question is used.
  */
 export function buildExam(
-    bank: QuestionBank,
+    questions: PracticeQuestion[],
     count: number,
     enabledTopics: TopicKey[],
 ): ExamItem[] {
-    const pool = bank.questions.filter((q) => enabledTopics.includes(q.topic));
+    const pool = questions.filter((q) => enabledTopics.includes(q.topic));
     const chosen = shuffle(pool).slice(0, Math.max(0, count));
     return chosen.map((question) => ({ question, selectedIndex: null }));
 }
