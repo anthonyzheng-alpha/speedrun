@@ -4,6 +4,7 @@
 mod card;
 mod coverage;
 mod envelope;
+mod exam_date;
 mod graphs;
 mod memory;
 mod metrics;

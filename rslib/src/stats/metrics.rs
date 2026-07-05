@@ -180,6 +180,9 @@ impl Collection {
         let front_to_section = front_to_section_index();
         let timing = self.timing_today()?;
         let now = timing.now;
+        // Evaluate retrievability at the exam date (not "now"), matching the
+        // per-card memory model, so the performance signal is forward-looking.
+        let (exam_target_secs, _) = self.exam_target_secs(now);
         let fsrs = FSRS::new(None).unwrap();
 
         let cids = self.search_cards("", SortMode::NoOrder)?;
@@ -212,7 +215,7 @@ impl Collection {
                 continue;
             };
 
-            let seconds = now.elapsed_secs_since(last_review) as u32;
+            let seconds = (exam_target_secs - last_review.0).max(0) as u32;
             let decay = card.decay.unwrap_or(FSRS5_DEFAULT_DECAY);
             let retrievability =
                 fsrs.current_retrievability_seconds(state.into(), seconds, decay);

@@ -49,30 +49,38 @@ impl Collection {
 
         let seconds_elapsed = timing.now.elapsed_secs_since(last_review_time) as u32;
 
-        let fsrs_retrievability = card
-            .memory_state
-            .zip(Some(seconds_elapsed))
-            .zip(Some(card.decay.unwrap_or(FSRS5_DEFAULT_DECAY)))
-            .map(|((state, seconds), decay)| {
-                FSRS::new(None).unwrap().current_retrievability_seconds(
-                    state.into(),
-                    seconds,
-                    decay,
-                )
-            });
+        let decay = card.decay.unwrap_or(FSRS5_DEFAULT_DECAY);
+        let fsrs_retrievability = card.memory_state.map(|state| {
+            FSRS::new(None).unwrap().current_retrievability_seconds(
+                state.into(),
+                seconds_elapsed,
+                decay,
+            )
+        });
 
-        // Memory model: reuse the FSRS point estimate and back it with the
+        // Memory model: evaluate retrievability at the exam date (not "now",
+        // which spikes to ~100% right after any review) and back it with the
         // card's rated review history (Again == 1 counts as not recalled).
+        let (exam_target_secs, exam_user_set) = self.exam_target_secs(timing.now);
+        let seconds_to_exam = (exam_target_secs - last_review_time.0).max(0) as u32;
+        let exam_retrievability = card.memory_state.map(|state| {
+            FSRS::new(None).unwrap().current_retrievability_seconds(
+                state.into(),
+                seconds_to_exam,
+                decay,
+            )
+        });
         let rated_reviews = revlog.iter().filter(|e| e.has_rating()).count() as u32;
         let recalled = revlog
             .iter()
             .filter(|e| e.has_rating() && e.button_chosen >= 2)
             .count() as u32;
         let memory_estimate = Some(memory_estimate(
-            fsrs_retrievability,
+            exam_retrievability,
             rated_reviews,
             recalled,
             last_review_time.0,
+            exam_user_set,
         ));
 
         let original_deck = if card.original_deck_id == DeckId(0) {

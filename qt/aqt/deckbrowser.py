@@ -123,6 +123,8 @@ class DeckBrowser:
             self._on_create()
         elif cmd == "practice_exam":
             self._on_practice_exam()
+        elif cmd == "set_exam_date":
+            self._on_set_exam_date()
         elif cmd == "drag":
             source, target = arg.split(",")
             self._handle_drag_and_drop(DeckId(int(source)), DeckId(int(target or 0)))
@@ -267,11 +269,15 @@ class DeckBrowser:
         performance = metrics.performance_overall
         readiness = metrics.readiness_overall
 
+        exam_date_row = self._exam_date_row()
+
         if not performance.has_enough_data:
             return (
                 '<div id=examMetrics><hr class=exam-metrics-divider>'
-                '<div class=exam-metrics-note>{}</div></div>'.format(
-                    html.escape(performance.justification)
+                '{exam_date_row}'
+                '<div class=exam-metrics-note>{msg}</div></div>'.format(
+                    exam_date_row=exam_date_row,
+                    msg=html.escape(performance.justification),
                 )
             )
 
@@ -310,6 +316,7 @@ class DeckBrowser:
         return """
 <div id=examMetrics>
   <hr class=exam-metrics-divider>
+  {exam_date_row}
   <div class=exam-metrics-group>
     <div class=exam-metrics-headline>{performance_row}</div>
     <div class=exam-metrics-sections>{sections}</div>
@@ -322,12 +329,29 @@ class DeckBrowser:
   </div>
 </div>
 """.format(
+            exam_date_row=exam_date_row,
             performance_row=performance_row,
             sections=sections,
             performance_note=performance_note,
             readiness_row=readiness_row,
             readiness_note=readiness_note,
         )
+
+    def _exam_date_row(self) -> str:
+        """A line showing the target exam date, with a link to change it. The
+        memory and performance metrics are projected to this date."""
+        import time
+
+        exam_date_secs = self.mw.col.get_config("mcatExamDate", None)
+        if exam_date_secs:
+            date_str = time.strftime("%Y-%m-%d", time.localtime(int(exam_date_secs)))
+            label = f"Exam date: <b>{html.escape(date_str)}</b>"
+        else:
+            label = "Exam date: <b>not set</b> (projecting to a 30-day horizon)"
+        return (
+            '<div class=exam-metrics-note>{label} '
+            '<a href=# onclick="return pycmd(\'set_exam_date\')">change</a></div>'
+        ).format(label=label)
 
     def _renderDeckTree(self, top: DeckTreeNode) -> str:
         buf = """
@@ -527,6 +551,31 @@ class DeckBrowser:
         from aqt.practiceexam import display_practice_exam
 
         display_practice_exam(self.mw)
+
+    def _on_set_exam_date(self) -> None:
+        """Prompt for the target exam date (YYYY-MM-DD) and store it in config.
+        The memory and performance metrics are projected to this date."""
+        import time
+        from datetime import datetime
+
+        current = self.mw.col.get_config("mcatExamDate", None)
+        default = ""
+        if current:
+            default = time.strftime("%Y-%m-%d", time.localtime(int(current)))
+        text = getOnlyText(
+            "Enter your exam date (YYYY-MM-DD):",
+            parent=self.mw,
+            default=default,
+        )
+        if not text.strip():
+            return
+        try:
+            parsed = datetime.strptime(text.strip(), "%Y-%m-%d")
+        except ValueError:
+            showInfo("Please enter the date as YYYY-MM-DD.", parent=self.mw)
+            return
+        self.mw.col.set_config("mcatExamDate", int(parsed.timestamp()))
+        self.refresh()
 
     ######################################################################
 
