@@ -30,6 +30,7 @@ class PracticeExamDialog(QDialog):
         restoreGeom(self, self.TITLE, default_size=(800, 800))
 
         self.web = AnkiWebView(kind=AnkiWebViewKind.PRACTICE_EXAM)
+        self.web.set_bridge_command(self._link_handler, self)
         self.web.load_sveltekit_page("practice-exam")
         layout = QVBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
@@ -38,10 +39,19 @@ class PracticeExamDialog(QDialog):
         self.setWindowTitle("Practice Exam")
         self.show()
 
+    def _link_handler(self, url: str) -> None:
+        if url == "refresh_home_metrics" and self.mw.state == "deckBrowser":
+            self.mw.deckBrowser.refresh()
+
+    def _refresh_home_if_visible(self) -> None:
+        if self.mw.state == "deckBrowser":
+            self.mw.deckBrowser.refresh()
+
     def reject(self) -> None:
         self.web.cleanup()
         self.web = None  # type: ignore
         saveGeom(self, self.TITLE)
+        self._refresh_home_if_visible()
         QDialog.reject(self)
 
 

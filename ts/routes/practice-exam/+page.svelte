@@ -73,12 +73,12 @@ License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
         }
     }
 
-    function next() {
+    async function next() {
         if (currentIndex < items.length - 1) {
             currentIndex += 1;
         } else {
+            await persistResults();
             phase = "results";
-            void persistResults();
         }
     }
 
@@ -99,6 +99,7 @@ License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
         }
         try {
             await recordPracticeExam({ results });
+            pycmd("refresh_home_metrics");
         } catch (error) {
             console.error("failed to record practice exam", error);
         }
