@@ -16,6 +16,12 @@ The code can be found in [memory_model.rs](../rslib/src/stats/memory.rs).
 
 Cutoff: Needs ≥ 3 rated reviews and a valid FSRS memory state (FSRS must be turned on)
 
+### Calibration
+
+Before calibrating, I tested the accuracy of the model's predictions by running a simulation where 200 students studied every card in the built-in deck and then took several practice exams. We then compared the model's predicted memory probabilities with the actual memory outcomes. Our initial Brier score was 0.2219:
+
+![Memory model calibration curve](images/memory-calibration.png)
+
 ## Performance model
 
 The performance model measures the probability they will correctly answer a new exam-style question. On the app, there is an overall performance metric, and four section-specific performance metrics.
