@@ -574,6 +574,12 @@ class DeckBrowser:
         except ValueError:
             showInfo("Please enter the date as YYYY-MM-DD.", parent=self.mw)
             return
+        if parsed.date() < datetime.now().date():
+            showInfo(
+                "Exam date must be today or in the future.",
+                parent=self.mw,
+            )
+            return
         self.mw.col.set_config("mcatExamDate", int(parsed.timestamp()))
         self.refresh()
 
