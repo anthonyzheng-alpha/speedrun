@@ -59,7 +59,25 @@ interface OnboardingStep {
     // Only keep steps whose target element is actually present.
     const active = steps.filter((s) => document.querySelector(s.sel));
 
+    // Disable user scrolling while the tour is active so the fixed-position
+    // spotlight stays aligned with its target. Programmatic scrollIntoView()
+    // still works with overflow hidden, so step navigation is unaffected.
+    const rootEl = document.documentElement;
+    const bodyEl = document.body;
+    const prevRootOverflow = rootEl.style.overflow;
+    const prevBodyOverflow = bodyEl.style.overflow;
+
+    function lockScroll() {
+        rootEl.style.overflow = "hidden";
+        bodyEl.style.overflow = "hidden";
+    }
+    function unlockScroll() {
+        rootEl.style.overflow = prevRootOverflow;
+        bodyEl.style.overflow = prevBodyOverflow;
+    }
+
     function finish() {
+        unlockScroll();
         overlay!.style.display = "none";
         try {
             pycmd("onboarding_done");
@@ -132,5 +150,6 @@ interface OnboardingStep {
         finish();
     });
 
+    lockScroll();
     show(0);
 };

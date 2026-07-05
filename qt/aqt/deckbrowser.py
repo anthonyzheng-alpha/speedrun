@@ -341,7 +341,20 @@ class DeckBrowser:
     </div>
   </div>
 </div>
-<script>window.ankiStartOnboarding && window.ankiStartOnboarding(%s);</script>
+<script>
+(function() {
+  var steps = %s;
+  var tries = 0;
+  function go() {
+    if (window.ankiStartOnboarding) {
+      window.ankiStartOnboarding(steps);
+    } else if (tries++ < 40) {
+      setTimeout(go, 50);
+    }
+  }
+  go();
+})();
+</script>
 """ % (
             steps_json
         )
