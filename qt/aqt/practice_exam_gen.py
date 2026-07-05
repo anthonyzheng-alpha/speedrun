@@ -15,6 +15,7 @@ import json
 import math
 import os
 import random
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -224,6 +225,98 @@ def _verify(api_key: str, candidates: list[dict[str, Any]]) -> list[dict[str, An
     return [c for i, c in enumerate(candidates) if answers.get(i) == c["answerIndex"]]
 
 
+EVAL_LOG_NAME = "practice_exam_eval.txt"
+_STATE_PREFIX = "#STATE "
+
+
+def _eval_log_path() -> Path:
+    """Location of the accuracy log; overridable via PRACTICE_EXAM_EVAL_LOG."""
+    override = os.environ.get("PRACTICE_EXAM_EVAL_LOG")
+    if override:
+        return Path(override)
+    # qt/aqt/ -> speedrun/ (repo root), matching the .env resolution above.
+    return Path(__file__).resolve().parents[2] / EVAL_LOG_NAME
+
+
+def _read_last_state(path: Path) -> dict[str, Any]:
+    """Return the cumulative totals from the last #STATE line, or empty."""
+    try:
+        if not path.exists():
+            return {}
+        last: dict[str, Any] = {}
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.startswith(_STATE_PREFIX):
+                try:
+                    last = json.loads(line[len(_STATE_PREFIX):])
+                except json.JSONDecodeError:
+                    continue
+        return last if isinstance(last, dict) else {}
+    except OSError:
+        return {}
+
+
+def _fmt_topics(tallies: dict[str, list[int]]) -> str:
+    parts = []
+    for topic in sorted(tallies):
+        verified, total = tallies[topic]
+        pct = (100.0 * verified / total) if total else 0.0
+        parts.append(f"{topic} {verified}/{total} ({pct:.1f}%)")
+    return ", ".join(parts)
+
+
+def _log_eval(
+    candidates: list[dict[str, Any]], vetted: list[dict[str, Any]]
+) -> None:
+    """Append per-run and cumulative verify accuracy to the eval log."""
+    if not candidates:
+        return
+    try:
+        run: dict[str, list[int]] = {}
+        for c in candidates:
+            topic = c.get("topic", "unknown")
+            run.setdefault(topic, [0, 0])[1] += 1
+        for v in vetted:
+            topic = v.get("topic", "unknown")
+            run.setdefault(topic, [0, 0])[0] += 1
+
+        run_total = sum(t[1] for t in run.values())
+        run_verified = sum(t[0] for t in run.values())
+
+        path = _eval_log_path()
+        prior = _read_last_state(path)
+        cum_topics: dict[str, list[int]] = {
+            k: [int(v[0]), int(v[1])]
+            for k, v in (prior.get("topics") or {}).items()
+            if isinstance(v, (list, tuple)) and len(v) == 2
+        }
+        for topic, (verified, total) in run.items():
+            cum = cum_topics.setdefault(topic, [0, 0])
+            cum[0] += verified
+            cum[1] += total
+        cum_total = sum(t[1] for t in cum_topics.values())
+        cum_verified = sum(t[0] for t in cum_topics.values())
+
+        ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        run_pct = (100.0 * run_verified / run_total) if run_total else 0.0
+        cum_pct = (100.0 * cum_verified / cum_total) if cum_total else 0.0
+        state = {
+            "candidates": cum_total,
+            "verified": cum_verified,
+            "topics": cum_topics,
+        }
+        block = (
+            f"[{ts}] run: candidates={run_total} verified={run_verified} "
+            f"accuracy={run_pct:.1f}% | {_fmt_topics(run)}\n"
+            f"[{ts}] cumulative: candidates={cum_total} verified={cum_verified} "
+            f"accuracy={cum_pct:.1f}% | {_fmt_topics(cum_topics)}\n"
+            f"{_STATE_PREFIX}{json.dumps(state, separators=(',', ':'))}\n"
+        )
+        with path.open("a", encoding="utf-8") as fh:
+            fh.write(block)
+    except Exception as exc:  # noqa: BLE001 - logging must never break generation
+        print(f"practice-exam eval logging failed: {exc}")
+
+
 def generate_exam(count: int, topics: list[str]) -> list[dict[str, Any]]:
     """Generate and verify up to `count` questions across the enabled topics."""
     api_key = resolve_api_key()
@@ -238,6 +331,7 @@ def generate_exam(count: int, topics: list[str]) -> list[dict[str, Any]]:
         )
 
     vetted = _verify(api_key, candidates)
+    _log_eval(candidates, vetted)
     random.shuffle(vetted)
 
     result: list[dict[str, Any]] = []

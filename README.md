@@ -32,6 +32,7 @@ Grounding and verification:
     - Psychology & Sociology -> behavioral-sciences
     - CARS -> cars
 - The eval gate is a blind independent solve: the model re-answers each generated question with no answer key, and only questions it re-derives correctly are kept. (Kaplan text is copyrighted and not fetched; it informs prompt style only.)
+- The accuracy of the generated problems (share of candidates the eval re-answers correctly) is appended to a `practice_exam_eval.txt` log, per-run and cumulative, broken down by MCAT section. On desktop this is written to the repo root (`speedrun/practice_exam_eval.txt`, overridable with the `PRACTICE_EXAM_EVAL_LOG` env var); on Android it is written to the app's external files dir (`Android/data/<pkg>/files/practice_exam_eval.txt`, retrievable via a file manager or `adb pull`).
 - Generated problems are categorized into the four MCAT sections, so answering them correctly/incorrectly feeds the same performance/readiness metrics as the hardcoded problems.
 
 Where generation runs and how the key is supplied:
