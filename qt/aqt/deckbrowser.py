@@ -307,6 +307,14 @@ class DeckBrowser:
             for section in metrics.performance_sections
             if section.estimate.has_enough_data
         )
+        readiness_sections = "".join(
+            "<span class=exam-metrics-section>{name}: <b>{score:.0f}</b></span>".format(
+                name=html.escape(section.section),
+                score=section.estimate.score,
+            )
+            for section in metrics.readiness_sections
+            if section.estimate.has_enough_data
+        )
         performance_note = (
             "Your estimated chance of answering a new exam-style question "
             "correctly. Based on your flashcard reviews and practice exams "
@@ -325,6 +333,7 @@ class DeckBrowser:
   <hr class=exam-metrics-divider>
   <div class=exam-metrics-group>
     <div class=exam-metrics-headline>{readiness_row}</div>
+    <div class=exam-metrics-sections>{readiness_sections}</div>
     <div class=exam-metrics-note>{readiness_note}</div>
   </div>
 </div>
@@ -334,6 +343,7 @@ class DeckBrowser:
             sections=sections,
             performance_note=performance_note,
             readiness_row=readiness_row,
+            readiness_sections=readiness_sections,
             readiness_note=readiness_note,
         )
 
