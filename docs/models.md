@@ -20,7 +20,13 @@ Cutoff: Needs ≥ 3 rated reviews and a valid FSRS memory state (FSRS must be tu
 
 Before calibrating, I tested the accuracy of the model's predictions by running a simulation where 200 students studied every card in the built-in deck and then took several practice exams. We then compared the model's predicted memory probabilities with the actual memory outcomes. Our initial Brier score was 0.2219:
 
-![Memory model calibration curve](images/memory-calibration.png)
+![Memory model calibration curve](images/memory-calibration-200.png)
+
+After raising the number of students to 1000, the Brier score increased to 0.2247.
+
+![Memory model calibration curve](images/memory-calibration-1000.png)
+
+In both cases, the model over-predicts the probability of remembering a fact.
 
 ## Performance model
 
