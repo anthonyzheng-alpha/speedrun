@@ -20,6 +20,8 @@ In addition to specializing in MCAT studying, this clone also implements:
     - Hardcoded problems derived from Kaplan's MCAT test prep books.
     - AI-generated problems (see below). A toggle on the practice-exam config screen turns these on or off; when off, only the hardcoded problems are used and the user is warned of reduced problem diversity.
 
+More information about the models can be found in the [models.md](docs/models.md) file.
+
 ### AI-generated practice problems
 
 When the "Use AI-generated problems" toggle is on, questions are generated **in real time** as the exam starts (a loading state is shown while this happens). Each generated question is verified before it is shown, and the app falls back to the bundled question banks if generation is unavailable or returns too few questions.
