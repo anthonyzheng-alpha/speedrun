@@ -26,7 +26,11 @@ After raising the number of students to 1000, the Brier score increased to 0.224
 
 ![Memory model calibration curve](images/memory-calibration-1000.png)
 
-In both cases, the model over-predicts the probability of remembering a fact.
+In both cases, the model over-predicts the probability of remembering a fact. Thus, the new calculation for the memory metric is encoding * retention as opposed to a weighted average.
+
+After calibrating, the Brier score decreased to 0.2031:
+
+![Memory model calibration curve](images/memory-calibration-after.png)
 
 ## Performance model
 

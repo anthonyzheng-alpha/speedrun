@@ -155,14 +155,37 @@ class CardMemory:
         return retrievability(self.stability, max(day - self.last_review_day, 0.0), decay)
 
 
+def _gate(card: CardMemory) -> bool:
+    """The display gate: a memory state and at least MIN_MEMORY_SAMPLES reviews."""
+    return card.has_state and card.n_reviews >= MIN_MEMORY_SAMPLES
+
+
 def predict_memory_recall(card: CardMemory, exam_day: float, decay: float = FSRS5_DEFAULT_DECAY) -> float | None:
     """The app's memory-model prediction for one card, in [0, 1].
 
+    Multiplicative "encoding x retention": the observed success rate estimates
+    how well the fact is encoded, and the exam-date retrievability scales it
+    down for decay. Mirrors the current ``rslib/src/stats/memory.rs``.
+
     Returns ``None`` when the display gate isn't met (no memory state, or fewer
-    than ``MIN_MEMORY_SAMPLES`` rated reviews) - mirroring
-    ``rslib/src/stats/memory.rs`` and ``card.rs``.
+    than ``MIN_MEMORY_SAMPLES`` rated reviews).
     """
-    if not card.has_state or card.n_reviews < MIN_MEMORY_SAMPLES:
+    if not _gate(card):
+        return None
+
+    p_fsrs = _clamp(card.retrievability_at(exam_day, decay), 0.0, 1.0)
+    p_obs = _clamp(card.successes / card.n_reviews, 0.0, 1.0)
+    return _clamp(p_obs * p_fsrs, 0.0, 1.0)
+
+
+def predict_memory_recall_blend(
+    card: CardMemory, exam_day: float, decay: float = FSRS5_DEFAULT_DECAY
+) -> float | None:
+    """The previous weighted-average model, kept for before/after comparison.
+
+    ``p = w*p_obs + (1-w)*p_fsrs`` with ``w = n / (n + MIN_MEMORY_SAMPLES)``.
+    """
+    if not _gate(card):
         return None
 
     p_fsrs = _clamp(card.retrievability_at(exam_day, decay), 0.0, 1.0)

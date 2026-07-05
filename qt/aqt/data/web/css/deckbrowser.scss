@@ -156,6 +156,177 @@ tr:hover:not(.top-level-drag-row) {
     margin: 2em 0;
 }
 
+/* Labeled home sections (Study / Practice / Metrics) */
+.home-section {
+    margin: 1.5em auto;
+    max-width: 40em;
+}
+
+.section-label {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin: 0 0 0.1em 0;
+    text-align: start;
+}
+
+.section-hint {
+    font-size: 0.85em;
+    opacity: 0.7;
+    margin-bottom: 0.6em;
+    text-align: start;
+}
+
+#studySection {
+    table {
+        margin: 0;
+    }
+}
+
+/* Practice card */
+.practice-card {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius-medium);
+    background: var(--canvas-glass);
+
+    @include elevation(1, $opacity-boost: -0.08);
+    &:hover {
+        @include elevation(2);
+    }
+}
+
+.practice-btn {
+    font-size: 1.05em;
+    padding: 0.5em 1.4em;
+    cursor: pointer;
+    border-radius: var(--border-radius-medium);
+    border: 1px solid color(border);
+    background: color(canvas-inset);
+    color: color(fg);
+
+    &:hover {
+        background: color(border-subtle);
+    }
+}
+
+/* Metrics dropdown */
+#metricsPanel {
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius-medium);
+    background: var(--canvas-glass);
+    padding: 0 1em;
+
+    > summary {
+        cursor: pointer;
+        list-style: none;
+        padding: 0.7em 0;
+        font-size: 1.15em;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+
+        &::before {
+            content: "\25B8"; /* right-pointing triangle */
+            display: inline-block;
+            margin-right: 0.5em;
+            transition: transform 0.15s ease;
+            opacity: 0.7;
+        }
+    }
+
+    &[open] > summary::before {
+        transform: rotate(90deg);
+    }
+
+    .metrics-body {
+        padding-bottom: 0.5em;
+    }
+
+    /* The wrapped blocks no longer need their own top margins. */
+    #examCoverage {
+        margin-top: 0.5em;
+    }
+    #examMetrics {
+        margin-top: 0.5em;
+    }
+}
+
+/* First-run guided tour */
+.onboarding-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+}
+
+.onboarding-spotlight {
+    position: fixed;
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.6);
+    border: 2px solid color(fg);
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.onboarding-tooltip {
+    position: fixed;
+    max-width: 20em;
+    padding: 1em;
+    background: color(canvas-overlay);
+    color: color(fg);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.onboarding-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-bottom: 0.3em;
+}
+
+.onboarding-text {
+    font-size: 0.9em;
+    line-height: 1.35;
+}
+
+.onboarding-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.9em;
+}
+
+.onboarding-progress {
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+.onboarding-skip {
+    font-size: 0.85em;
+    margin-right: 0.8em;
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.onboarding-next {
+    padding: 0.35em 1em;
+    cursor: pointer;
+    border-radius: var(--border-radius-medium);
+    border: 1px solid color(border);
+    background: color(canvas-inset);
+    color: color(fg);
+
+    &:hover {
+        background: color(border-subtle);
+    }
+}
+
 #examCoverage {
     margin: 1.5em auto 0.5em auto;
     max-width: 40em;

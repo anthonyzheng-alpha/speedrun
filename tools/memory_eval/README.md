@@ -16,8 +16,9 @@ seconds with no backend build.
    success is `mastery x FSRS retrievability`; success -> "Good", miss ->
    "Again", updating the FSRS state.
 4. Predicts recall with the app's exact formula (`fsrs_model.predict_memory_recall`,
-   copied from `rslib/src/stats/memory.rs`): blend the exam-date retrievability
-   with the observed success rate, gated at >= 3 rated reviews.
+   copied from `rslib/src/stats/memory.rs`): a multiplicative "encoding x
+   retention" estimate - the observed success rate times the exam-date
+   retrievability - gated at >= 3 rated reviews.
 5. Has each student take several practice exams; each question is answered
    correctly with probability equal to the section's true recall.
 6. Scores the predicted section recall against actual outcomes as a **Brier
@@ -29,9 +30,23 @@ seconds with no backend build.
 - Retrievability uses the FSRS-5 power forgetting curve with the same default
   decay (`-0.5`) as the Rust `fsrs` crate, so it matches
   `current_retrievability_seconds`.
-- The prediction blend is copied verbatim from `memory.rs`.
+- The prediction is copied verbatim from `memory.rs` (`p = p_obs * p_fsrs`).
+  The previous weighted-average blend is kept as
+  `fsrs_model.predict_memory_recall_blend` and is selectable via
+  `--predict-mode blend` for before/after comparison.
 - Stability/difficulty updates use the standard FSRS-5 equations with published
   default parameters. This validates the *algorithm*, not the compiled binary.
+
+## Why multiplicative
+
+An earlier version blended the two signals as a weighted *average*, which
+averaged in the optimistic retrievability term and consistently
+**over-predicted** recall (the reliability curve sat below the diagonal, mean
+forecast ~0.13 above actual). Modelling recall as encoding strength (observed
+hit rate) times retention (retrievability) removes that upward bias: in the
+simulation the calibration bias drops from about +0.13 to near zero and the
+Brier score falls to essentially the irreducible noise floor. Reproduce the old
+behaviour with `--predict-mode blend`.
 
 ## Run
 
@@ -60,6 +75,7 @@ Outputs land in `out/`:
 | `--sections` | all | Comma-separated topic keys, e.g. `biology_biochemistry,cars` |
 | `--include-generated` | off | Also count the generated question bank |
 | `--control` | none | `perfect` sets forecast == truth (calibration floor) |
+| `--predict-mode` | multiplicative | `multiplicative` (shipping) or `blend` (old weighted average) |
 | `--out` | `out` | Output directory |
 
 ## Interpreting the Brier score
@@ -77,5 +93,7 @@ python sanity.py
 ```
 
 Verifies that the perfect-calibration control beats the model (lower Brier),
-that the model's forecasts are positively correlated with observed recall, and
-that a deliberately mis-scheduled "crammer" cohort shows over-confidence.
+that the model's forecasts are positively correlated with observed recall, that
+the multiplicative model is less over-confident than the old blend on a
+deliberately mis-scheduled "crammer" cohort, and that its overall calibration
+bias is smaller than the blend's.

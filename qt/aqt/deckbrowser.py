@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import html
+import json
 from copy import deepcopy
 from dataclasses import dataclass
 from typing import Any
@@ -55,10 +56,12 @@ class DeckBrowserContent:
     Attributes:
         tree {str} -- HTML of the deck tree section
         stats {str} -- HTML of the stats section
+        practice {str} -- HTML of the practice section (MCAT only)
     """
 
     tree: str
     stats: str
+    practice: str = ""
 
 
 @dataclass
@@ -125,6 +128,8 @@ class DeckBrowser:
             self._on_practice_exam()
         elif cmd == "set_exam_date":
             self._on_set_exam_date()
+        elif cmd == "onboarding_done":
+            self._on_onboarding_done()
         elif cmd == "drag":
             source, target = arg.split(",")
             self._handle_drag_and_drop(DeckId(int(source)), DeckId(int(target or 0)))
@@ -151,16 +156,48 @@ class DeckBrowser:
     # HTML generation
     ##########################################################################
 
-    _body = """
-<center>
+    def _is_mcat_collection(self) -> bool:
+        """Whether the current collection has MCAT topics. MCAT-specific home
+        UI (Study/Practice section labels, the Practice card, and the metrics
+        dropdown) is only shown for these collections, so ordinary Anki users
+        see the plain deck list."""
+        return bool(self._render_data.exam_coverage.topics_total)
+
+    def _render_body(self, content: DeckBrowserContent) -> str:
+        tree_table = """
 <table cellspacing=0 cellpadding=3>
-%(tree)s
-</table>
+{tree}
+</table>""".format(
+            tree=content.tree
+        )
+
+        if not self._is_mcat_collection():
+            return """
+<center>
+{tree_table}
 
 <br>
-%(stats)s
+{stats}
 </center>
-"""
+""".format(
+                tree_table=tree_table, stats=content.stats
+            )
+
+        return """
+<center>
+<div class=home-section id=studySection>
+  <h2 class=section-label>Study</h2>
+  <div class=section-hint>Review your decks and keep your cards fresh.</div>
+  {tree_table}
+</div>
+{practice}
+{stats}
+</center>
+""".format(
+            tree_table=tree_table,
+            practice=content.practice,
+            stats=content.stats,
+        )
 
     def _renderPage(self, reuse: bool = False) -> None:
         if not reuse:
@@ -192,11 +229,13 @@ class DeckBrowser:
         content = DeckBrowserContent(
             tree=self._renderDeckTree(data.tree),
             stats=self._renderStats(),
+            practice=self._render_practice_section(),
         )
         gui_hooks.deck_browser_will_render_content(self, content)
         self.web.stdHtml(
             self._v1_upgrade_message(data.sched_upgrade_required)
-            + self._body % content.__dict__,
+            + self._render_body(content)
+            + self._render_onboarding_tour(),
             css=["css/deckbrowser.css"],
             js=[
                 "js/vendor/jquery.min.js",
@@ -214,15 +253,101 @@ class DeckBrowser:
         self.web.eval("window.scrollTo(0, %d, 'instant');" % offset)
 
     def _renderStats(self) -> str:
-        return (
-            self._render_exam_coverage()
-            + self._render_exam_metrics()
-            + (
-                '<div id="studiedToday"><span>{}</span></div>'.format(
-                    self._render_data.studied_today
-                )
+        return self._render_metrics_dropdown() + (
+            '<div id="studiedToday"><span>{}</span></div>'.format(
+                self._render_data.studied_today
             )
         )
+
+    def _render_practice_section(self) -> str:
+        """The Practice section: a labeled card that launches the MCAT
+        practice exam. Only shown for MCAT collections; ordinary Anki users are
+        unaffected."""
+        if not self._is_mcat_collection():
+            return ""
+        return """
+<div class=home-section id=practiceSection>
+  <h2 class=section-label>Practice</h2>
+  <div class=section-hint>Test yourself with exam-style questions.</div>
+  <div class=practice-card>
+    <button class=practice-btn onclick="pycmd('practice_exam')">Do Practice Exam</button>
+  </div>
+</div>
+"""
+
+    def _render_metrics_dropdown(self) -> str:
+        """Condense exam coverage, performance, and readiness into a single
+        collapsible "Metrics" dropdown, collapsed by default. Returns an empty
+        string for non-MCAT collections."""
+        if not self._is_mcat_collection():
+            return ""
+        inner = self._render_exam_coverage() + self._render_exam_metrics()
+        if not inner:
+            return ""
+        return """
+<div class=home-section id=metricsSection>
+  <details id=metricsPanel>
+    <summary><span class=metrics-summary-label>Metrics</span></summary>
+    <div class=metrics-body>{inner}</div>
+  </details>
+</div>
+""".format(
+            inner=inner
+        )
+
+    def _render_onboarding_tour(self) -> str:
+        """A one-time guided tour for first-time users. Highlights the Study
+        section, the Practice card, and the Metrics dropdown so new users know
+        where to go. Shown only once per collection (gated on the
+        ``mcatOnboardingShown`` config flag) and only for MCAT collections."""
+        if not self._is_mcat_collection():
+            return ""
+        if self.mw.col.get_config("mcatOnboardingShown", False):
+            return ""
+
+        steps = [
+            {
+                "sel": "#studySection",
+                "title": "Study",
+                "body": "Your decks live here. Review cards daily to keep "
+                "everything fresh.",
+            },
+            {
+                "sel": "#practiceSection",
+                "title": "Practice",
+                "body": "Ready to test yourself? Take an exam-style practice "
+                "exam from here.",
+            },
+            {
+                "sel": "#metricsSection",
+                "title": "Metrics",
+                "body": "Open this dropdown any time to see your exam "
+                "coverage, performance, and projected score.",
+            },
+        ]
+        steps_json = json.dumps(steps)
+        return """
+<div id=onboardingOverlay class=onboarding-overlay style="display:none">
+  <div id=onboardingSpotlight class=onboarding-spotlight></div>
+  <div id=onboardingTooltip class=onboarding-tooltip>
+    <div id=onboardingTitle class=onboarding-title></div>
+    <div id=onboardingText class=onboarding-text></div>
+    <div class=onboarding-controls>
+      <span id=onboardingProgress class=onboarding-progress></span>
+      <span>
+        <a id=onboardingSkip class=onboarding-skip href=#>Skip</a>
+        <button id=onboardingNext class=onboarding-next>Next</button>
+      </span>
+    </div>
+  </div>
+</div>
+<script>window.ankiStartOnboarding && window.ankiStartOnboarding(%s);</script>
+""" % (
+            steps_json
+        )
+
+    def _on_onboarding_done(self) -> None:
+        self.mw.col.set_config("mcatOnboardingShown", True)
 
     def _render_exam_coverage(self) -> str:
         """Show the percent of the MCAT exam studied so far, broken down by
@@ -528,7 +653,6 @@ class DeckBrowser:
     ######################################################################
 
     drawLinks = [
-        ["", "practice_exam", "Do Practice Exam"],
         ["", "shared", tr.decks_get_shared()],
         ["", "create", tr.decks_create_deck()],
         ["Ctrl+Shift+I", "import", tr.decks_import_file()],
@@ -537,6 +661,11 @@ class DeckBrowser:
     def _drawButtons(self) -> None:
         buf = ""
         drawLinks = deepcopy(self.drawLinks)
+        # The Practice card in the body is the primary entry point for MCAT
+        # collections, so it is not duplicated in the bottom bar. Non-MCAT
+        # collections have no card, so keep a bottom-bar entry point there.
+        if not self._is_mcat_collection():
+            drawLinks.insert(0, ["", "practice_exam", "Do Practice Exam"])
         for b in drawLinks:
             if b[0]:
                 b[0] = tr.actions_shortcut_key(val=shortcut(b[0]))

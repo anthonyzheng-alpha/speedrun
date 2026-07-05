@@ -25,7 +25,14 @@ from dataclasses import dataclass
 import numpy as np
 
 from data import SECTION_LABELS, DeckData
-from fsrs_model import FsrsEngine, CardMemory, predict_memory_recall, AGAIN, GOOD
+from fsrs_model import (
+    FsrsEngine,
+    CardMemory,
+    predict_memory_recall,
+    predict_memory_recall_blend,
+    AGAIN,
+    GOOD,
+)
 from students import Student
 
 
@@ -39,6 +46,17 @@ class SimConfig:
     # "model" (real prediction) or "perfect" (forecast == truth, a calibration
     # control) - used by the sanity checks.
     forecast_mode: str = "model"
+    # Which prediction formula to use: "multiplicative" (shipping) or "blend"
+    # (the previous weighted average), for before/after comparison.
+    predict_mode: str = "multiplicative"
+
+
+def _predictor(predict_mode: str):
+    if predict_mode == "blend":
+        return predict_memory_recall_blend
+    if predict_mode == "multiplicative":
+        return predict_memory_recall
+    raise ValueError(f"unknown predict_mode: {predict_mode}")
 
 
 def _review_days(n_reviews: int, span_days: int) -> list[float]:
@@ -77,6 +95,7 @@ def run_simulation(
 ) -> list[dict]:
     cfg = config or SimConfig()
     engine = FsrsEngine()
+    predict = _predictor(cfg.predict_mode)
     rows: list[dict] = []
 
     for student in students:
@@ -99,7 +118,7 @@ def run_simulation(
                     )
                 )
                 card, true_recall = _simulate_card(engine, ceiling, review_days, exam_day, rng)
-                pred = predict_memory_recall(card, exam_day, engine.decay)
+                pred = predict(card, exam_day, engine.decay)
                 if pred is None:
                     continue
                 forecasts.append(pred)
@@ -183,6 +202,12 @@ def _build_parser():
         default="none",
         help="'perfect' sets forecast==truth as a calibration control.",
     )
+    p.add_argument(
+        "--predict-mode",
+        choices=["multiplicative", "blend"],
+        default="multiplicative",
+        help="Prediction formula: 'multiplicative' (shipping) or 'blend' (old weighted average).",
+    )
     p.add_argument("--out", type=str, default="out", help="Output directory.")
     return p
 
@@ -223,6 +248,7 @@ def main(argv: list[str] | None = None) -> int:
         questions_per_section=args.questions_per_section,
         card_sigma=args.card_sigma,
         forecast_mode="perfect" if args.control == "perfect" else "model",
+        predict_mode=args.predict_mode,
     )
     rows = run_simulation(deck, students, rng, sim_cfg)
 
@@ -234,8 +260,12 @@ def main(argv: list[str] | None = None) -> int:
     plot_reliability(rows, out_dir / "reliability.png", "Memory model calibration")
     plot_brier_by_section(rows, out_dir / "brier_by_section.png", "Brier score by MCAT section")
 
+    mean_forecast = float(np.mean([r["forecast"] for r in rows])) if rows else float("nan")
+    bias = mean_forecast - summary["base_rate"]
+    print(f"Prediction mode: {args.predict_mode}")
     print(f"Students: {args.students}   Rows (practice questions): {summary['n']:,}")
     print(f"Base rate (overall fraction correct): {summary['base_rate']:.3f}")
+    print(f"Mean forecast: {mean_forecast:.3f}   Calibration bias (forecast - actual): {bias:+.3f}")
     print(f"Overall Brier score: {summary['overall_brier']:.4f}")
     print("Per-section Brier:")
     for key, value in summary["by_section"].items():

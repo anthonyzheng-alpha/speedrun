@@ -53,13 +53,14 @@ pub(crate) fn memory_estimate(
         return insufficient_data(n_reviews, last_review_secs);
     }
 
-    // Blend the FSRS forecast with the observed recall rate, trusting the
-    // observed rate more as reviews accumulate (shrinkage toward the forecast).
+    // Recall = encoding strength x retention. The observed success rate
+    // estimates how well the fact is encoded (the ceiling), and the FSRS
+    // retrievability scales it down for decay to the exam date. Averaging the
+    // two (as a weighted blend once did) lets the optimistic retrievability
+    // term pull the estimate above actual recall, so we multiply instead.
     let p_fsrs = exam_retrievability.clamp(0.0, 1.0);
     let p_obs = (successes as f32 / n_reviews as f32).clamp(0.0, 1.0);
-    let n = n_reviews as f32;
-    let w = n / (n + MIN_MEMORY_SAMPLES as f32);
-    let p = (w * p_obs + (1.0 - w) * p_fsrs).clamp(0.0, 1.0);
+    let p = (p_obs * p_fsrs).clamp(0.0, 1.0);
 
     let (lo, hi) = wilson_interval(p, n_reviews as f32);
     let range_min = lo * 100.0;
@@ -77,8 +78,8 @@ pub(crate) fn memory_estimate(
         )
     };
     let justification = format!(
-        "Chance of recalling this on the exam, {horizon}. Based on {n_reviews} reviews \
-         ({success_rate}% recalled) blended with the FSRS forecast.",
+        "Chance of recalling this on the exam, {horizon}. Your {success_rate}% recall rate \
+         over {n_reviews} reviews, scaled by projected retention.",
     );
 
     CardMemoryEstimate {
@@ -157,10 +158,15 @@ mod test {
     }
 
     #[test]
-    fn score_within_range_and_matches_when_signals_agree() {
-        // When the observed rate equals the forecast, the blend equals both.
+    fn score_is_product_of_observed_rate_and_retrievability() {
+        // Recall = encoding x retention: observed rate 0.75 times retrievability
+        // 0.75 gives 0.5625, not the 0.75 an average would have produced.
         let est = memory_estimate(Some(0.75), 20, 15, 0, true);
-        assert!((est.score - 75.0).abs() < 1e-3);
+        assert!(
+            (est.score - 56.25).abs() < 1e-2,
+            "expected 0.75 x 0.75 = 56.25%, got {}",
+            est.score
+        );
         assert!(
             est.range_min <= est.score && est.score <= est.range_max,
             "score {} should lie within [{}, {}]",
@@ -173,8 +179,8 @@ mod test {
     #[test]
     fn failed_card_reads_low_even_with_high_forecast() {
         // A card answered "Again" every time (0 successes) must not read ~99%,
-        // even if the raw FSRS retrievability is high: the observed recall rate
-        // drags the blended score down.
+        // even if the raw FSRS retrievability is high: multiplying by the 0%
+        // observed recall rate drives the score to zero.
         let est = memory_estimate(Some(0.99), 4, 0, 0, true);
         assert!(est.has_enough_data);
         assert!(
