@@ -57,6 +57,8 @@ Each build was then given one final MCAT exam to take based on their allowed stu
 - Build 2: 71.9%
 - Build 3: 71.0%
 
+![Study feature testing results](tools/memory_eval/out/experiment_performance.png)
+
 Thus, my implemented study feature was effective in improving the performance metric.
 
 ## Mobile (Android)
