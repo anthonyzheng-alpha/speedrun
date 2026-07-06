@@ -43,6 +43,22 @@ Where generation runs and how the key is supplied:
 - **Android**: generation runs in Kotlin via OkHttp. The key is injected at build time into `BuildConfig.OPENAI_API_KEY` from `local.properties` (`OPENAI_API_KEY=...`), the `OPENAI_API_KEY` env var, or `speedrun-android/.env`. If no key is present, the app uses the bundled banks.
 - The key is never committed (both `.env` files are gitignored). Note that embedding the key in an Android build makes it extractable from the APK, which is acceptable for a personal/dev build but not for public distribution.
 
+### Study feature testing
+
+I chose to focus on doing AI-generated practice problems and exams to be the main study feature of the app. I wanted to see if doing more practice problems will improve the performance metric. I tested this feature's effectiveness with three builds:
+
+- Build 1: Allowed to study the built-in deck or make their own. Studies for 20 minutes. Then takes practice exam.
+- Build 2: Allowed to study the built-in deck or make their own. Studies for 20 minutes. Not allowed to take practice exam.
+- Build 3: Only allowed to study the built-in deck. Studies for 20 minutes. Not allowed to take practice exam.
+
+Each build was then given one final MCAT exam to take based on their allowed study materials. I used AI to run this experiment with 1000 students and the description and code procedure are shown in [tools/memory_eval/results](tools/memory_eval/README.md) and [tools/memory_eval/experiment.py](tools/memory_eval/experiment.py). The results for each build was:
+
+- Build 1: 85.6%
+- Build 2: 71.9%
+- Build 3: 71.0%
+
+Thus, my implemented study feature was effective in improving the performance metric.
+
 ## Mobile (Android)
 
 The Android app lives in two sibling repositories (folder names are required by Gradle):

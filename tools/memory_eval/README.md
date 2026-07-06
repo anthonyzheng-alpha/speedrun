@@ -97,3 +97,60 @@ that the model's forecasts are positively correlated with observed recall, that
 the multiplicative model is less over-confident than the old blend on a
 deliberately mis-scheduled "crammer" cohort, and that its overall calibration
 bias is smaller than the blend's.
+
+## Practice-problems effectiveness experiment
+
+`experiment.py` reuses the same synthetic-student machinery to answer a
+different question: **does the AI practice-problems feature improve
+performance?** It runs the three builds from the project `README.md` ("Study
+feature testing") as arms of a controlled, paired experiment and reports the
+**performance metric = accuracy on a final held-out MCAT exam** for each build.
+
+```bash
+cd speedrun/tools/memory_eval
+python experiment.py --students 1000 --seed 0
+```
+
+The three arms:
+
+- **Build 1** - 20 min studying (own or built-in deck) + an AI practice exam.
+- **Build 2** - 20 min studying (own or built-in deck), no practice exam.
+- **Build 3** - 20 min studying (built-in deck only), no practice exam.
+
+How the 20-minute study block is modelled (the 20 min is simulated, not real
+time): each student starts with a latent per-section mastery `m0` and each
+retrieval event nudges it up with diminishing returns
+(`m <- m + eta*(1 - m)`). Flashcards use `eta_card`; Build 1's practice
+problems use `eta_exam = exam_boost * eta_card` (default `exam_boost = 3`,
+matching `W_EXAM=3` vs `W_CARD=1` in `rslib/src/stats/metrics.rs`). Builds that
+can make their own deck (1 and 2) spend study on their weak sections; the
+built-in-only build (3) studies evenly. The boosted mastery feeds the same FSRS
+card simulation, so forgetting before the exam still applies, and each
+final-exam question is a Bernoulli draw at the resulting recall.
+
+Outputs land in `out/`:
+
+- `experiment_performance.png` - grouped bar chart of final-exam accuracy by
+  build (overall + per section) with 95% Wilson confidence intervals.
+- `experiment_results.csv` - one row per simulated final-exam question.
+
+Pass `--report ../../practice_problems_experiment.txt` to also write the summary
+table to the repo root. The *direction* and *mechanism* of the effects reflect
+the app's design; the effect *magnitude* depends on the learning-rate knobs
+(`--eta-card`, `--exam-boost`, `--cards-per-min`, `--practice-questions-per-section`),
+all of which are CLI flags you can vary.
+
+### Useful flags (experiment)
+
+| Flag | Default | Meaning |
+|------|---------|---------|
+| `--students` | 1000 | Synthetic students per build |
+| `--seed` | 0 | RNG seed (reproducible) |
+| `--study-minutes` | 20 | Simulated study-block length |
+| `--cards-per-min` | 3 | Flashcards reviewed per minute |
+| `--eta-card` | 0.05 | Per-flashcard learning rate |
+| `--exam-boost` | 3 | Practice-problem rate as a multiple of `--eta-card` |
+| `--practice-questions-per-section` | 10 | Practice-exam questions in Build 1 |
+| `--questions-per-section` | 20 | Final-exam questions per section |
+| `--out` | `out` | Output directory |
+| `--report` | (none) | Also write the text summary to this path |
